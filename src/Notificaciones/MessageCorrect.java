@@ -92,7 +92,7 @@ public class MessageCorrect extends javax.swing.JDialog {
         setVisible(true);
     }
 
-    public void closeMessage() {
+    public void closeMessage(){
         startAnimator(false);
         if(JF!=null){
             JF.apagarWallpaper();

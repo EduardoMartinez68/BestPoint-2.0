@@ -31,6 +31,7 @@ public class FrameReporte extends javax.swing.JFrame {
         setIconImage(Toolkit.getDefaultToolkit().getImage("icono.png"));
         this.setTitle("Reporte");
         this.setResizable(false);  
+        this.setSize(1100, 600);
         actualizarReporte();
         centrarPanel();
     }

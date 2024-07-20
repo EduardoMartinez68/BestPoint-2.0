@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Toolkit;
+import javax.swing.JFrame;
 import javax.swing.SwingConstants;
 import puntoventa.FrameInventario;
 
@@ -20,8 +21,34 @@ public class FrameCorrecto extends javax.swing.JDialog {
         centrarPanel();
         this.setVisible(false);
         this.dispose();
-        new MessageCorrect(JF,mensaje,JF).setVisible(true);
+        JFrame frame = new JFrame();
+        centrarPanelNewMessage(frame);
+        new MessageCorrect(frame,mensaje,JF).setVisible(true);
     }
+    
+    private void centrarPanelNewMessage(JFrame frame){
+        //si existe un JF centrame 
+        if(JF!=null){
+            int w=JF.getWidth()/2;
+            int h=JF.getHeight()/2;
+            int x=JF.getX();
+            int y=JF.getY();
+
+            int myW=this.getWidth()/2;
+            int myH=this.getHeight()/2;
+            frame.setLocation(x+w-myW,y+h-myH);
+        }
+        else{
+            //ponerme en la posicion del mouse 
+            Point punto=MouseInfo.getPointerInfo().getLocation();
+            int Mx=punto.x;
+            int My=punto.y;
+            int sizeX=this.getWidth()/2;
+            int sizeY=this.getHeight()/2;
+            frame.setLocation(Mx-sizeX,My-sizeY);           
+        }
+    }   
+    
     
     private void centrarPanel(){
         //si existe un JF centrame 
