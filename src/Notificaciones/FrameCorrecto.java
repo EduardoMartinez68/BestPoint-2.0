@@ -18,6 +18,9 @@ public class FrameCorrecto extends javax.swing.JDialog {
         setIconImage(Toolkit.getDefaultToolkit().getImage("icono.png"));
         actualizarTexto(mensaje);
         centrarPanel();
+        this.setVisible(false);
+        this.dispose();
+        new MessageCorrect(JF,mensaje,JF).setVisible(true);
     }
     
     private void centrarPanel(){
@@ -152,11 +155,11 @@ public class FrameCorrecto extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 558, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 263, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         pack();
