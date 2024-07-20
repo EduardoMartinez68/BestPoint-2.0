@@ -16,8 +16,8 @@ import puntoventa.FrameInventario;
 public class Mail {
     private Properties propiedad;
     private Session session;
-    String emailFrom="eduardoa484812@gmail.com";
-    String password="quzwxbvwhqvbdjcd";
+    String emailFrom="";
+    String password="";
     String emailTo=emailFrom;
     
     //variables del mensaje

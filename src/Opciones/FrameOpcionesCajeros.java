@@ -1339,12 +1339,13 @@ public class FrameOpcionesCajeros extends javax.swing.JFrame {
         Permiso19=true;
     }
     
+    
     private void agregarCajero(String nombreCajero,String usuario,String password,String turno){
        int id=generarId();
        obtenerInformacionPermisos();
         try{
             Statement sts=con.createStatement();
-            sts.addBatch("INSERT INTO `cajeros` (`id`,`usuario`, `nombre`, `password`, `turno` , `permiso`, `permiso2`, `permiso3`, `permiso4`, `permiso5`, `permiso6`, `permiso7`, `permiso8`, `permiso9`, `permiso10`, `permiso11`, `permiso12`, `permiso13`, `permiso14`, `permiso15`, `permiso16`, `permiso17`, `permiso18`, `permiso19`)"
+            sts.executeUpdate("INSERT INTO cajeros (id, usuario, nombre, password, turno, permiso1, permiso2, permiso3, permiso4, permiso5, permiso6, permiso7, permiso8, permiso9, permiso10, permiso11, permiso12, permiso13, permiso14, permiso15, permiso16, permiso17, permiso18, permiso19)"
                     +" VALUES ('"+id+"','"+usuario+"','"+nombreCajero+"','"+password+"','"+turno+"','"+pI(Permiso1)+"','"+pI(Permiso2)+"','"+pI(Permiso3)+"','"+pI(Permiso4)+"','"+pI(Permiso5)+"','"+pI(Permiso6)+"','"+pI(Permiso7)+"','"+pI(Permiso8)+"','"+pI(Permiso9)+"','"+pI(Permiso10)+"','"+pI(Permiso11)+"','"+pI(Permiso12)+"','"+pI(Permiso13)+"','"+pI(Permiso14)+"','"+pI(Permiso15)+"','"+pI(Permiso16)+"','"+pI(Permiso17)+"','"+pI(Permiso18)+"','"+pI(Permiso19)+"' )" );
             
             sts.executeBatch();
