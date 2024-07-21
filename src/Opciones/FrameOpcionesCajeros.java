@@ -255,7 +255,7 @@ public class FrameOpcionesCajeros extends javax.swing.JFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 60, 22));
+        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 50, 22));
 
         tablaCajeros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

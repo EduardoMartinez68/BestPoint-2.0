@@ -633,7 +633,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Img/agregar.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Agregar impuesto"/>
+                <Property name="text" type="java.lang.String" value="Agregar"/>
               </Properties>
               <Events>
                 <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAgregarImpuestoMousePressed"/>
@@ -931,15 +931,11 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="textField8" min="-2" pref="335" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" pref="31" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="textField8" alignment="0" min="-2" pref="335" max="-2" attributes="0"/>
                           <Component id="textField7" alignment="0" min="-2" pref="335" max="-2" attributes="0"/>
                           <Component id="textField9" alignment="0" min="-2" pref="335" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="242" max="32767" attributes="0"/>
+                      <EmptySpace pref="279" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -947,10 +943,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton1" min="-2" pref="46" max="-2" attributes="0"/>
-                          <Component id="textField8" pref="52" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="textField8" pref="52" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="textField7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -961,13 +954,6 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton1">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Img/agregar.png"/>
-                </Property>
-              </Properties>
-            </Component>
             <Component class="textfield.TextField" name="textField7">
               <Properties>
                 <Property name="labelText" type="java.lang.String" value="Localizacion"/>

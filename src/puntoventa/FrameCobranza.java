@@ -3,6 +3,8 @@ package puntoventa;
 import ClasesGlobales.convertir;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -326,7 +328,8 @@ public class FrameCobranza extends javax.swing.JFrame {
             float cambio=dineroRecibido-cobrar;
             
             //ver si el cambio es mayor al dinero que tengo en caja
-            txtCambio.setText(cambio+"");
+            BigDecimal totalRounded = new BigDecimal(cambio).setScale(2, RoundingMode.HALF_UP); //esto es para redondear a 2 cifras
+            txtCambio.setText(totalRounded+"");
         }catch(Exception e){
             txtCambio.setText("Error");
         }    

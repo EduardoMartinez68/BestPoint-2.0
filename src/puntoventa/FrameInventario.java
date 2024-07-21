@@ -39,6 +39,8 @@ import java.awt.GridBagLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -115,7 +117,7 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         obj=new ActualizarTablaCarrito(con,numCarrito);
         borrarTextoCodigo();
         actualizarTablaCarrito();
-        borrarTabla();
+        //borrarTabla();
         
         TableCarrito.setCellSelectionEnabled(false);
         indexCarritos.add(0);
@@ -2078,8 +2080,9 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
                  int cantidad=searchCard.Cantidad();
                  cantidad++;
                  float total=precio*cantidad;
+                 BigDecimal totalRounded = new BigDecimal(total).setScale(2, RoundingMode.HALF_UP);
                  Statement sts=con.createStatement();
-                 String actualizar="update carritocompras set cantidad = '"+cantidad+"', total = '"+total+"' WHERE id = "+id;
+                 String actualizar="update carritocompras set cantidad = '"+cantidad+"', total = '"+totalRounded+"' WHERE id = "+id;
                  sts.executeUpdate(actualizar);
             }
         }
@@ -2146,9 +2149,10 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         try{
             //cantidad--;
             float total=precio*cantidad;
+            BigDecimal totalRounded = new BigDecimal(total).setScale(2, RoundingMode.HALF_UP);
             Statement sts=con.createStatement();
             //"UPDATE `carritocompras` SET `cantidad` = '2', `total` = '2' WHERE `carritocompras`.`id` = 0";
-            String actualizar="update carritocompras set cantidad = '"+cantidad+"', total = '"+total+"' where id = "+id;
+            String actualizar="update carritocompras set cantidad = '"+cantidad+"', total = '"+totalRounded+"' where id = "+id;
             sts.executeUpdate(actualizar);
         }catch(SQLException e){
             System.out.println("actualizarEliminacion ");
@@ -2173,6 +2177,7 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
             labelCantCarrito.setText(numerosCarrito+"");
             
             //aumentarle un valor a ese ultimo dato y retornar
+            BigDecimal totalRounded = new BigDecimal(total).setScale(2, RoundingMode.HALF_UP);
             return total;
         }catch(SQLException ex){
             return total;
@@ -2193,6 +2198,7 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
             System.out.println(ex.getNextException());
         }
     }    
+    
     //actualizar tablas
     public void actualizarTablaCarrito(){
         obj=new ActualizarTablaCarrito(con,numCarrito);      
@@ -2228,7 +2234,8 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         
        //actualizar datos de pantalla
        TotalC=calcularTotal();
-       labelTotal.setText("$"+TotalC+""); 
+       BigDecimal totalRounded = new BigDecimal(TotalC).setScale(2, RoundingMode.HALF_UP);
+       labelTotal.setText("$"+totalRounded+""); 
        txtNumCarrito.setText(numCarrito+"");       
     }
 

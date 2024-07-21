@@ -130,7 +130,6 @@ public class FrameProductos extends javax.swing.JFrame {
         textField5 = new textfield.TextField();
         textField6 = new textfield.TextField();
         jPanel8 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         textField7 = new textfield.TextField();
         textField8 = new textfield.TextField();
         textField9 = new textfield.TextField();
@@ -516,7 +515,7 @@ public class FrameProductos extends javax.swing.JFrame {
 
         btnAgregarImpuesto.setBackground(new java.awt.Color(255, 255, 255));
         btnAgregarImpuesto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/agregar.png"))); // NOI18N
-        btnAgregarImpuesto.setText("Agregar impuesto");
+        btnAgregarImpuesto.setText("Agregar");
         btnAgregarImpuesto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnAgregarImpuestoMousePressed(evt);
@@ -715,8 +714,6 @@ public class FrameProductos extends javax.swing.JFrame {
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/agregar.png"))); // NOI18N
-
         textField7.setLabelText("Localizacion");
         textField7.setLineColor(new java.awt.Color(22, 35, 105));
         textField7.setSelectionColor(new java.awt.Color(22, 35, 105));
@@ -736,21 +733,16 @@ public class FrameProductos extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(textField8, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textField8, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textField7, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textField9, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(242, Short.MAX_VALUE))
+                .addContainerGap(279, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textField8, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE))
+                .addComponent(textField8, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(textField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1194,8 +1186,8 @@ public class FrameProductos extends javax.swing.JFrame {
     }
     
     private void btnAgregarImpuestoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarImpuestoMousePressed
-        new FrameDepartamento(con,JF).setVisible(true);
-        this.dispose();
+        //new FrameDepartamento(con,JF).setVisible(true);
+        //this.dispose();
     }//GEN-LAST:event_btnAgregarImpuestoMousePressed
 
     private void labelExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelExitMouseClicked
@@ -1590,7 +1582,6 @@ public class FrameProductos extends javax.swing.JFrame {
     private combobox.Combobox comboxDepartamentos;
     private combobox.Combobox comboxTipoImpuesto;
     private com.raven.datechooser.DateChooser dateChooser1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private checkbox.JCheckBoxCustom jCheckBoxCustom1;
     private checkbox.JCheckBoxCustom jCheckBoxCustom2;
