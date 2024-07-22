@@ -7,6 +7,8 @@ Todos los derechos reservados.
 **/
 
 package puntoventa;
+import Membresia.ComprobarMembresia;
+import Membresia.FrameMembresia;
 import com.raven.main.Main;
 import java.sql.Connection;
 
@@ -15,10 +17,20 @@ public class PuntoVenta {
         //conectar con la base de datos
         Conexion obj=new Conexion();
         Connection con=obj.Conexion("postgres");
+       ComprobarMembresia comprobarMembresia;
        
         //comprobamos que si se conecto
         if(con!=null){
-            new FrameInisiarSecion(con).setVisible(true);
+            //comprobamos si existe una cuenta registrada en esta pc 
+            comprobarMembresia=new ComprobarMembresia(con);
+            
+            if(comprobarMembresia.existeCuentaAsignada()){
+                //si existe una membresia guardada en esta pc, abrimos el sistema
+                new FrameInisiarSecion(con).setVisible(true);
+            }else{
+                //si no existe una membresia guardada en esta pc, abrimos el campo de relleno
+               new  FrameMembresia().setVisible(true);
+            }
         }
     }
 }

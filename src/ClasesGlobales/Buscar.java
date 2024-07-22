@@ -20,6 +20,22 @@ public class Buscar {
         this.con=con;
     }
 
+    public String buscarTokenPc(){
+        try{
+            Statement sts = getCon().createStatement();
+            sts.execute("Select * from bestpoint");
+            ResultSet rsBusqueda = sts.getResultSet();
+            
+            //pasar por todos los pedidos a ver donde coinside
+            while (rsBusqueda.next()){
+                return rs.getString("token");
+            }
+        }
+        catch(SQLException e){
+            System.out.println("Error "+e);
+        }
+        return "";
+    }    
     
     public boolean buscarProducto(String codigoBarra){
         try{
@@ -76,7 +92,6 @@ public class Buscar {
             System.out.println("Error "+e);
         }
     }    
-    
     
     public void buscar(String codigoBarra){
         try{
