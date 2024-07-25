@@ -9,6 +9,7 @@ Todos los derechos reservados.
 package puntoventa;
 import Membresia.ComprobarMembresia;
 import Membresia.FrameMembresia;
+import Notificaciones.MessageError;
 import com.raven.main.Main;
 import java.sql.Connection;
 
@@ -28,9 +29,12 @@ public class PuntoVenta {
                 //si existe una membresia guardada en esta pc, abrimos el sistema
                 new FrameInisiarSecion(con).setVisible(true);
             }else{
+                new FrameInisiarSecion(con).setVisible(true);
                 //si no existe una membresia guardada en esta pc, abrimos el campo de relleno
-               new  FrameMembresia().setVisible(true);
+               //new  FrameMembresia(con).setVisible(true);
             }
+        }else{
+            MessageError ms=new MessageError(null,"No pudimos conectarnos a su base de datos");
         }
     }
 }

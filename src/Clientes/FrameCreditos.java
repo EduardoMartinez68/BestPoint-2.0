@@ -253,6 +253,7 @@ public class FrameCreditos extends javax.swing.JFrame {
         btnAgregarCredito.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregarCredito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/agregar.png"))); // NOI18N
         btnAgregarCredito.setText("Agregar un nuevo credito");
+        btnAgregarCredito.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregarCredito.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnAgregarCreditoMouseEntered(evt);
@@ -266,10 +267,13 @@ public class FrameCreditos extends javax.swing.JFrame {
                 btnAgregarCreditoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAgregarCredito, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 170, 210, 40));
+        getContentPane().add(btnAgregarCredito, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 170, 240, 40));
 
+        btnBuscar.setBackground(new java.awt.Color(22, 35, 105));
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/busqueda.png"))); // NOI18N
         btnBuscar.setText("Buscar");
+        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);

@@ -772,17 +772,14 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         btnProductos.setLayout(btnProductosLayout);
         btnProductosLayout.setHorizontalGroup(
             btnProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnProductosLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(labelV3)
-                .addContainerGap(32, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnProductosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelV3, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                .addContainerGap())
         );
         btnProductosLayout.setVerticalGroup(
             btnProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnProductosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelV3, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(labelV3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout PanelBtnsLayout = new javax.swing.GroupLayout(PanelBtns);
@@ -1191,33 +1188,6 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         background.setSize(3500, 2500);
         getContentPane().setComponentZOrder(background, 0); // Moverlo al índice 0 lo trae al frente
         background.setBackground(new Color(0, 0, 0,200)); //el fondo del mensaje
-        
-        /*
-        SimpleAttributeSet center = new SimpleAttributeSet();
-        StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
-        setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
-        animator = new Animator(350, new TimingTargetAdapter() {
-            @Override
-            public void timingEvent(float fraction) {
-                float f = show ? fraction : 1f - fraction;
-                glass.setAlpha(f - f * 0.3f);
-                //setOpacity(f);
-            }
-
-            @Override
-            public void end() {
-                if (show == false) {
-                    dispose();
-                    glass.setVisible(false);
-                }
-            }
-        });
-        animator.setResolution(0);
-        animator.setAcceleration(.5f);
-        animator.setDeceleration(.5f);
-        //setOpacity(0f);
-        glass = new Glass();
-        */
     }
     
     public void abrirAtajos(int atajo){

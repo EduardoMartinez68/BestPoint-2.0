@@ -25,9 +25,10 @@ public class Buscar {
             Statement sts = getCon().createStatement();
             sts.execute("Select * from bestpoint");
             ResultSet rsBusqueda = sts.getResultSet();
-            
-            //pasar por todos los pedidos a ver donde coinside
+           
+            //pasar por todos los tokens a ver donde coinside
             while (rsBusqueda.next()){
+                this.rs=rsBusqueda;
                 return rs.getString("token");
             }
         }

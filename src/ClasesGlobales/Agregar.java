@@ -30,6 +30,21 @@ public class Agregar {
         this.JF2=JF2;
     }
     
+    public void actualizarToken(String token, String password) {
+        try {
+            Statement sts = con.createStatement();
+
+            String sql = "UPDATE opciones SET " +
+                         "administrador = '" + token + "', " +
+                         "password = '" + password + "', " +
+                         "WHERE id = " + 0;
+
+            sts.executeUpdate(sql);
+        } catch (SQLException e) {
+            System.out.println("No se puede actualizar");
+        }
+    }
+    
     public void agregarOpciones(){
         try{
             Statement sts=con.createStatement();

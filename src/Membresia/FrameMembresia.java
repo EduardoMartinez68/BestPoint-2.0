@@ -1,13 +1,26 @@
 package Membresia;
 
+import ClasesGlobales.Agregar;
+import Notificaciones.MessageError;
 import java.awt.Color;
+import java.awt.Toolkit;
+import java.sql.Connection;
+import puntoventa.FrameInisiarSecion;
 
 public class FrameMembresia extends javax.swing.JFrame {
     int mouseX;
     int mouseY;
+    ComprobarMembresia comprobarMembresia;
+    Connection con;
+    Agregar add;
     
-    public FrameMembresia() {
+    public FrameMembresia(Connection con) {
         initComponents();
+        this.con=con;
+        this.comprobarMembresia=new ComprobarMembresia(con);
+        this.add=new Agregar(con,null,null);
+        this.setTitle("Registrar Token");
+        setIconImage(Toolkit.getDefaultToolkit().getImage("icono.png"));
     }
 
     @SuppressWarnings("unchecked")
@@ -58,7 +71,7 @@ public class FrameMembresia extends javax.swing.JFrame {
                 btnIngresarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(462, 248, 188, 40));
+        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, 188, 40));
 
         txtUsuario.setLabelText("Ingresa Token de usuario");
         txtUsuario.setLineColor(new java.awt.Color(22, 35, 105));
@@ -67,11 +80,11 @@ public class FrameMembresia extends javax.swing.JFrame {
                 txtUsuarioActionPerformed(evt);
             }
         });
-        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 118, 492, -1));
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 118, 460, -1));
 
         txtPasword.setLabelText("Ingresa tu contraseña ");
         txtPasword.setLineColor(new java.awt.Color(22, 35, 105));
-        jPanel1.add(txtPasword, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 190, 492, -1));
+        jPanel1.add(txtPasword, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 190, 460, -1));
 
         jPanel2.setBackground(new java.awt.Color(57, 78, 194));
 
@@ -247,7 +260,21 @@ public class FrameMembresia extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIngresarMouseExited
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        //vamos a comprobar si este token existe y esta en uso
+        String token=txtUsuario.getText();
+        String password=txtPasword.getText();
+        int resultado=comprobarMembresia.esteTokenEstaEnUso(token,password);
         
+        //puedes canjear el token
+        if (resultado==1){
+            add.actualizarToken(token,password); //si el token no esta en uso actualizarlo aqui
+            new FrameInisiarSecion(con).setVisible(true);
+            this.dispose();
+        }else if(resultado==2){ //el token no existe o tiene un error
+            MessageError ms=new MessageError(this,"Token invalido");
+        }else if(resultado==3){ //error en el servidor
+            MessageError ms=new MessageError(this,"Error al comunicarnos con la base de datos");
+        }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed

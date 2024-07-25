@@ -105,9 +105,9 @@ public class FrameAnadirCantidad extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(207, 204, 205));
+        jButton2.setBackground(new java.awt.Color(245, 71, 71));
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/circulo-cruzado.png"))); // NOI18N
         jButton2.setText("Cancelar");
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

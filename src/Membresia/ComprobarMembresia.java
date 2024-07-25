@@ -26,41 +26,41 @@ public class ComprobarMembresia {
     
     
     
-    public boolean esteTokenEstaEnUso(String token,String passwordToken){
-        //estos son los datos para conectarme a mi servidor
-        String url = "jdbc:mysql://127.0.0.1:3306/u995592926_bestpoint";
+    public int esteTokenEstaEnUso(String token,String passwordToken){
+        // Datos para conectarse al servidor de Hostinger
+        String url = "jdbc:mysql://193.203.166.165:3306/u995592926_bestpoint"; 
         String user = "u995592926_bestpoint";
         String password = "Bobesponja48*";
-        
+
         try {
-            // Cargar el controlador JDBC
+            System.out.println("Verificar membresia membresias");
             Class.forName("com.mysql.cj.jdbc.Driver");
-
-            // Conectarse a la base de datos
-            Connection connection = DriverManager.getConnection(url, user, password);
-
+            Connection connection=DriverManager.getConnection(url,user,password);
+            System.out.println("Se conecto con la base de datos de las membresias exitosamente");
             // Crear una declaración y ejecutar una consulta
             Statement statement = connection.createStatement();
-            String query = "SELECT * FROM license WHERE token = '"+token+"' and password='"+passwordToken+"'";
+            String query = "SELECT * FROM license WHERE token = '" + token + "' and password = '" + passwordToken + "'";
             ResultSet resultSet = statement.executeQuery(query);
 
-            // si existe datos, veremos si ya fue activada con anterioridad
+            // Si existe datos, veremos si ya fue activada con anterioridad
             while (resultSet.next()) {
                 boolean licenseId = resultSet.getBoolean("activa");
-                return licenseId;
+                return 1;
             }
 
             // Cerrar la conexión
             resultSet.close();
             statement.close();
             connection.close();
+            
+            System.out.println("Cerro la conexion con la base de datos de las membresias");
+            return 2;
         } catch (ClassNotFoundException e) {
             System.out.println("Error al cargar el controlador JDBC: " + e.getMessage());
         } catch (SQLException e) {
-            System.out.println("Error al conectar a la base de datos: " + e.getMessage());
+            System.out.println("Error al conectar a la base de datos: " + e.getMessage());      
         }
-        
-        
-        return false;
+
+        return 1;
     }
 }

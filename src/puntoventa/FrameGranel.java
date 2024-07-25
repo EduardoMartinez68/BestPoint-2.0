@@ -10,6 +10,8 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -59,7 +61,7 @@ public class FrameGranel extends javax.swing.JFrame{
         totalGrams=convertirUnidad(unidadP,totalGrams);
         unidadtxt.setText(getValueGrams()+" "+unidadP);
         llenarComboBoxUnidad();
-        //centrarPanel();
+        centrarPanel();
         
         this.fram=JF;
         init();
@@ -150,15 +152,16 @@ public class FrameGranel extends javax.swing.JFrame{
         jLabel4 = new javax.swing.JLabel();
         btnCancel = new javax.swing.JButton();
         btnBuy = new javax.swing.JButton();
-        unidadtxt = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txtPrecio = new javax.swing.JLabel();
         ComboBoxUnidad = new combobox.Combobox();
         txtProductQuantity = new spinner.Spinner();
         txtCurrentAmount = new spinner.Spinner();
         background1 = new javaswingdev.message.Background();
         txtName = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        unidadtxt = new javax.swing.JLabel();
+        txtPrecio = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocationByPlatform(true);
@@ -250,8 +253,11 @@ public class FrameGranel extends javax.swing.JFrame{
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/balanza.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
+        btnCancel.setBackground(new java.awt.Color(245, 71, 71));
         btnCancel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnCancel.setForeground(new java.awt.Color(255, 255, 255));
         btnCancel.setText("Cancelar");
+        btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelActionPerformed(evt);
@@ -263,28 +269,13 @@ public class FrameGranel extends javax.swing.JFrame{
         btnBuy.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnBuy.setForeground(new java.awt.Color(255, 255, 255));
         btnBuy.setText("Aceptar");
+        btnBuy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBuy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuyActionPerformed(evt);
             }
         });
         jPanel1.add(btnBuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 180, 57));
-
-        unidadtxt.setForeground(new java.awt.Color(0, 0, 0));
-        unidadtxt.setText("100 g");
-        jPanel1.add(unidadtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
-
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Peso");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
-
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Precio");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
-
-        txtPrecio.setForeground(new java.awt.Color(0, 0, 0));
-        txtPrecio.setText("10");
-        jPanel1.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
 
         ComboBoxUnidad.setLabeText("Unidad");
         ComboBoxUnidad.setLineColor(new java.awt.Color(22, 35, 105));
@@ -317,21 +308,63 @@ public class FrameGranel extends javax.swing.JFrame{
         txtName.setForeground(new java.awt.Color(57, 78, 194));
         txtName.setText("Producto");
 
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Peso");
+
+        unidadtxt.setForeground(new java.awt.Color(0, 0, 0));
+        unidadtxt.setText("100 g");
+
+        txtPrecio.setForeground(new java.awt.Color(0, 0, 0));
+        txtPrecio.setText("10");
+
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Precio");
+
+        jLabel1.setText("Agrega o elimina esta cantidad del carrito");
+
         javax.swing.GroupLayout background1Layout = new javax.swing.GroupLayout(background1);
         background1.setLayout(background1Layout);
         background1Layout.setHorizontalGroup(
             background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(background1Layout.createSequentialGroup()
-                .addGap(241, 241, 241)
-                .addComponent(txtName)
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(background1Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(5, 5, 5)
+                        .addComponent(unidadtxt))
+                    .addGroup(background1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(7, 7, 7)
+                        .addComponent(txtPrecio)))
+                .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(background1Layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(jLabel1))
+                    .addGroup(background1Layout.createSequentialGroup()
+                        .addGap(177, 177, 177)
+                        .addComponent(txtName)))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
         background1Layout.setVerticalGroup(
             background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(background1Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(txtName)
-                .addContainerGap(324, Short.MAX_VALUE))
+                .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(background1Layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(unidadtxt))
+                        .addGap(14, 14, 14)
+                        .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(txtPrecio)))
+                    .addGroup(background1Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtName)))
+                .addContainerGap(283, Short.MAX_VALUE))
         );
 
         jPanel1.add(background1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 390));
@@ -403,19 +436,28 @@ public class FrameGranel extends javax.swing.JFrame{
         mouseY=evt.getY();
     }//GEN-LAST:event_jPanel2MousePressed
     
+    public static float redondear(float valor, int cifrasDecimales) {
+        BigDecimal bd = new BigDecimal(Float.toString(valor));
+        bd = bd.setScale(cifrasDecimales, RoundingMode.HALF_UP);
+        return bd.floatValue();
+    }
+
     private void cambiarPrecioConPeso(){
-        float gramos=conver.convertirStringFloat(txtProductQuantity.getValue().toString());
-        String unidad=ComboBoxUnidad.getSelectedItem().toString();
-        float respuesta=convertirUnidad(unidad,gramos);
-        float r=respuesta*valueProduct/totalGrams;
-        txtCurrentAmount.setValue(r);       
+        float gramos = conver.convertirStringFloat(txtProductQuantity.getValue().toString());
+        String unidad = ComboBoxUnidad.getSelectedItem().toString();
+        float respuesta = convertirUnidad(unidad, gramos);
+        float r = respuesta * valueProduct / totalGrams;
+        r = redondear(r, 2); // Redondear a 2 cifras decimales
+        txtCurrentAmount.setValue(r);
     }
         
     private void cambiarPesoConPrecio(){
-        float gramos=calculateProductQuantity();
-        String unidad=ComboBoxUnidad.getSelectedItem().toString();
-        float respuesta=convertirUnidad2(unidad,gramos);
-        txtProductQuantity.setValue(respuesta);       
+        // Dentro de tu código
+        float gramos = calculateProductQuantity();
+        String unidad = ComboBoxUnidad.getSelectedItem().toString();
+        float respuesta = convertirUnidad2(unidad, gramos);
+        respuesta = redondear(respuesta, 2); // Redondear a 2 cifras decimales
+        txtProductQuantity.setValue(respuesta);      
     }
     
     private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyActionPerformed
@@ -553,7 +595,7 @@ public class FrameGranel extends javax.swing.JFrame{
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void panelBtnExitMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBtnExitMousePressed
-        this.dispose();
+        cerrarVentana();
     }//GEN-LAST:event_panelBtnExitMousePressed
 
     private void ComboBoxUnidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxUnidadActionPerformed
@@ -696,6 +738,7 @@ public class FrameGranel extends javax.swing.JFrame{
     private javaswingdev.message.Background background1;
     private javax.swing.JButton btnBuy;
     private javax.swing.JButton btnCancel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
