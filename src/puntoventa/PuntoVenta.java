@@ -31,7 +31,7 @@ public class PuntoVenta {
             }else{
                 new FrameInisiarSecion(con).setVisible(true);
                 //si no existe una membresia guardada en esta pc, abrimos el campo de relleno
-               //new  FrameMembresia(con).setVisible(true);
+                //new  FrameMembresia(con).setVisible(true);
             }
         }else{
             MessageError ms=new MessageError(null,"No pudimos conectarnos a su base de datos");

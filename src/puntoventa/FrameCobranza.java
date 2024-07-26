@@ -1,5 +1,6 @@
 package puntoventa;
 
+import static ClasesGlobales.ConvertirNumeroATexto.convertirNumeroATexto;
 import ClasesGlobales.convertir;
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -19,13 +20,15 @@ public class FrameCobranza extends javax.swing.JFrame {
     int mouseX;
     int mouseY;
     Color colorBtnHover=new Color(46,69,209);
-    Color ColorBtn=new Color(22,35,105);
+    Color ColorBtn=new Color(57,78,194);
     
     public FrameCobranza(Connection con,FrameInventario JF) {
         this.con=con;
         this.JF=JF;
         initComponents();
-        txtCobro.setText(JF.getTotalCarritoNum()+"");
+        float total=JF.getTotalCarritoNum();
+        txtCobro.setText(total+"");
+        txtTotalTexto.setText("("+convertirNumeroATexto(total)+")");
         this.setResizable(false);
         this.setTitle("Compra del producto");
         setIconImage(Toolkit.getDefaultToolkit().getImage("icono.png"));
@@ -45,40 +48,73 @@ public class FrameCobranza extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txtCambio = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel6 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        txtTotalTexto = new javax.swing.JLabel();
+        txtEntrada1 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtEntrada2 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txtEntrada3 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         panelBtnExit = new javax.swing.JPanel();
         labelExit = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
         setLocationByPlatform(true);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Recibo");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Efectivo");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 160, -1));
 
+        txtEntrada.setBackground(new java.awt.Color(255, 255, 255));
         txtEntrada.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        txtEntrada.setForeground(new java.awt.Color(57, 78, 194));
+        txtEntrada.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtEntrada.setText("0");
         txtEntrada.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtEntradaKeyReleased(evt);
             }
         });
+        jPanel2.add(txtEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 158, 48));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Cobro");
+        jLabel3.setForeground(new java.awt.Color(57, 78, 194));
+        jLabel3.setText("Total a pagar");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, -1, -1));
 
         txtCobro.setEditable(false);
+        txtCobro.setBackground(new java.awt.Color(255, 255, 255));
         txtCobro.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        txtCobro.setForeground(new java.awt.Color(57, 78, 194));
         txtCobro.setText("0");
+        txtCobro.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.add(txtCobro, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 47, 235, 48));
 
-        btnGuardar.setBackground(new java.awt.Color(22, 35, 105));
+        btnGuardar.setBackground(new java.awt.Color(57, 78, 194));
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/donar.png"))); // NOI18N
         btnGuardar.setText("COMPRAR");
+        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnGuardarMouseEntered(evt);
@@ -92,64 +128,107 @@ public class FrameCobranza extends javax.swing.JFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
+        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 235, 50));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 204, 91));
         jLabel4.setText("Cambio");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 330, -1, -1));
 
         txtCambio.setEditable(false);
+        txtCambio.setBackground(new java.awt.Color(255, 255, 255));
         txtCambio.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        txtCambio.setForeground(new java.awt.Color(0, 204, 91));
         txtCambio.setText("0");
+        txtCambio.setBorder(null);
+        jPanel2.add(txtCambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 229, 48));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(80, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtCobro)
-                    .addComponent(txtEntrada)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCambio, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(81, 81, 81)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(69, 69, 69))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(jLabel3)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCobro, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 204, 91));
+        jLabel1.setText("$");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, -1, -1));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 738, 10));
 
-        jPanel1.setBackground(new java.awt.Color(22, 35, 105));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(57, 78, 194));
+        jLabel6.setText("$");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(281, 34, -1, -1));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 750, 10));
+
+        txtTotalTexto.setForeground(new java.awt.Color(57, 78, 194));
+        txtTotalTexto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtTotalTexto.setText("(cero)");
+        jPanel2.add(txtTotalTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 100, 240, -1));
+
+        txtEntrada1.setBackground(new java.awt.Color(255, 255, 255));
+        txtEntrada1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        txtEntrada1.setForeground(new java.awt.Color(57, 78, 194));
+        txtEntrada1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtEntrada1.setText("0");
+        txtEntrada1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtEntrada1KeyReleased(evt);
+            }
+        });
+        jPanel2.add(txtEntrada1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 158, 48));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Tarjeta Credito");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 160, -1));
+
+        txtEntrada2.setBackground(new java.awt.Color(255, 255, 255));
+        txtEntrada2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        txtEntrada2.setForeground(new java.awt.Color(57, 78, 194));
+        txtEntrada2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtEntrada2.setText("0");
+        txtEntrada2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtEntrada2KeyReleased(evt);
+            }
+        });
+        jPanel2.add(txtEntrada2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, 158, 48));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Tarjeta Debito");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 160, -1));
+
+        txtEntrada3.setBackground(new java.awt.Color(255, 255, 255));
+        txtEntrada3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        txtEntrada3.setForeground(new java.awt.Color(57, 78, 194));
+        txtEntrada3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtEntrada3.setText("0");
+        txtEntrada3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtEntrada3KeyReleased(evt);
+            }
+        });
+        jPanel2.add(txtEntrada3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 240, 158, 48));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Cupones");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, 160, -1));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/cupon_0.png"))); // NOI18N
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 70, 70));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/dinero_0.png"))); // NOI18N
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 70, 50));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/tarjeta_1.png"))); // NOI18N
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, 70, 50));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/tarjeta_0.png"))); // NOI18N
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 70, 50));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-7, 41, 870, 500));
+
+        jPanel1.setBackground(new java.awt.Color(57, 78, 194));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -166,7 +245,7 @@ public class FrameCobranza extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Cobranza");
 
-        panelBtnExit.setBackground(new java.awt.Color(22, 35, 105));
+        panelBtnExit.setBackground(new java.awt.Color(57, 78, 194));
 
         labelExit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         labelExit.setForeground(new java.awt.Color(0, 0, 0));
@@ -208,7 +287,7 @@ public class FrameCobranza extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 692, Short.MAX_VALUE)
                 .addComponent(panelBtnExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -222,24 +301,7 @@ public class FrameCobranza extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -275,7 +337,7 @@ public class FrameCobranza extends javax.swing.JFrame {
     }//GEN-LAST:event_labelExitMouseEntered
 
     private void labelExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelExitMouseExited
-        panelBtnExit.setBackground(new Color(22,35,105));
+        panelBtnExit.setBackground(new Color(57,78,194));
         labelExit.setForeground(Color.black);
     }//GEN-LAST:event_labelExitMouseExited
 
@@ -297,6 +359,18 @@ public class FrameCobranza extends javax.swing.JFrame {
     private void btnGuardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseExited
         btnGuardar.setBackground(ColorBtn);
     }//GEN-LAST:event_btnGuardarMouseExited
+
+    private void txtEntrada1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEntrada1KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEntrada1KeyReleased
+
+    private void txtEntrada2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEntrada2KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEntrada2KeyReleased
+
+    private void txtEntrada3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEntrada3KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEntrada3KeyReleased
     
     private void cobrar(){
         //comporbaremos que los datos si se pueden convertir a float
@@ -356,16 +430,31 @@ public class FrameCobranza extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel labelExit;
     private javax.swing.JPanel panelBtnExit;
     private javax.swing.JTextField txtCambio;
     private javax.swing.JTextField txtCobro;
     private javax.swing.JTextField txtEntrada;
+    private javax.swing.JTextField txtEntrada1;
+    private javax.swing.JTextField txtEntrada2;
+    private javax.swing.JTextField txtEntrada3;
+    private javax.swing.JLabel txtTotalTexto;
     // End of variables declaration//GEN-END:variables
 }
