@@ -19,6 +19,7 @@ import Inventario.FrameInventarioTienda;
 import Notificaciones.FrameCorrecto;
 import Notificaciones.FrameDecision;
 import Notificaciones.FrameError;
+import Notificaciones.MessageCorrect;
 import Opciones.FrameCreacionHorarios;
 import OpcionesBarra.FrameCompras2;
 import OpcionesBarra.FrameDevolucion;
@@ -1402,10 +1403,11 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
     private void btnBorrarTABLAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarTABLAActionPerformed
         if(inventarioApagado){
             //preguntar si quiere eliminar el carrito
-            int i=JOptionPane.showConfirmDialog(this, "¿Quiere eleminar los datos del carrito?");
-            if(i==0){
+            MessageDialog ms=new MessageDialog(this);
+            ms.showMessage("Eliminar productos del carrito","¿Quiere eleminar todos los datos del carrito?");
+            if(ms.getMessageType()==MessageDialog.MessageType.OK){
                 borrarTabla();
-                new FrameCorrecto(this,"El carrito fue baseado con exito").setVisible(true);
+                new MessageCorrect(this,"El carrito fue baseado con exito",this);
             }
         }
     }//GEN-LAST:event_btnBorrarTABLAActionPerformed

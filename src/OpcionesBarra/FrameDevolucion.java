@@ -5,6 +5,8 @@ import ClasesGlobales.Buscar;
 import ClasesGlobales.convertir;
 import Notificaciones.FrameCorrecto;
 import Notificaciones.FrameError;
+import Notificaciones.MessageCorrect;
+import Notificaciones.MessageError;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.sql.Connection;
@@ -56,198 +58,31 @@ public class FrameDevolucion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel3 = new javax.swing.JPanel();
-        txtCodigo = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txtCantidad = new javax.swing.JTextField();
-        btnDevolver1 = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        txtCantidad2 = new javax.swing.JTextField();
-        btnDevolver2 = new javax.swing.JButton();
-        ComboBoxProducto = new javax.swing.JComboBox<>();
-        jSeparator3 = new javax.swing.JSeparator();
         jPanel5 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         panelBtnExit = new javax.swing.JPanel();
         labelExit = new javax.swing.JLabel();
+        materialTabbed1 = new tabbed.MaterialTabbed();
+        jPanel6 = new javax.swing.JPanel();
+        txtCodigo = new textfield.TextField();
+        txtCantidad = new textfield.TextField();
+        btnDevolver1 = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jSeparator4 = new javax.swing.JSeparator();
+        txtCantidad2 = new textfield.TextField();
+        ComboBoxProducto = new javax.swing.JComboBox<>();
+        btnDevolver2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setAutoRequestFocus(false);
+        setBackground(new java.awt.Color(255, 255, 255));
         setLocationByPlatform(true);
         setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtCodigo.setBackground(new java.awt.Color(238, 238, 238));
-        txtCodigo.setText("Ingresar codigo de barras");
-        txtCodigo.setBorder(null);
-        txtCodigo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                txtCodigoMousePressed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setText("Codigo de barras");
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setText("Cantidad de productos a devolver");
-
-        txtCantidad.setBackground(new java.awt.Color(238, 238, 238));
-        txtCantidad.setText("Cantidad de productos a devolver");
-        txtCantidad.setBorder(null);
-        txtCantidad.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                txtCantidadMousePressed(evt);
-            }
-        });
-
-        btnDevolver1.setBackground(new java.awt.Color(22, 35, 105));
-        btnDevolver1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnDevolver1.setForeground(new java.awt.Color(255, 255, 255));
-        btnDevolver1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/actualizar.png"))); // NOI18N
-        btnDevolver1.setText("Devolver");
-        btnDevolver1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDevolver1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(btnDevolver1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(107, 107, 107))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCodigo, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCantidad, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnDevolver1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
-        );
-
-        jTabbedPane1.addTab("Devolver con codigo de barra", jPanel3);
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setText("Producto");
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setText("Cantidad de productos a devolver");
-
-        txtCantidad2.setBackground(new java.awt.Color(238, 238, 238));
-        txtCantidad2.setText("Cantidad de productos a devolver");
-        txtCantidad2.setBorder(null);
-        txtCantidad2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                txtCantidad2MousePressed(evt);
-            }
-        });
-
-        btnDevolver2.setBackground(new java.awt.Color(22, 35, 105));
-        btnDevolver2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnDevolver2.setForeground(new java.awt.Color(255, 255, 255));
-        btnDevolver2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/actualizar.png"))); // NOI18N
-        btnDevolver2.setText("Devolver");
-        btnDevolver2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDevolver2ActionPerformed(evt);
-            }
-        });
-
-        ComboBoxProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(ComboBoxProducto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txtCantidad2)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(btnDevolver2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 101, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator3)))
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ComboBoxProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCantidad2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnDevolver2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
-        );
-
-        jTabbedPane1.addTab("Devolucion en busqueda", jPanel4);
-
-        jPanel2.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 8, -1, 290));
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 390, 320));
-
-        jPanel5.setBackground(new java.awt.Color(22, 35, 105));
+        jPanel5.setBackground(new java.awt.Color(57, 78, 194));
         jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel5.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -264,7 +99,7 @@ public class FrameDevolucion extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Devolucion de producto");
 
-        panelBtnExit.setBackground(new java.awt.Color(22, 35, 105));
+        panelBtnExit.setBackground(new java.awt.Color(57, 78, 194));
 
         labelExit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         labelExit.setForeground(new java.awt.Color(0, 0, 0));
@@ -306,7 +141,7 @@ public class FrameDevolucion extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 571, Short.MAX_VALUE)
                 .addComponent(panelBtnExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -320,15 +155,113 @@ public class FrameDevolucion extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, -1));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, -1));
+
+        jPanel6.setBackground(new java.awt.Color(238, 238, 238));
+
+        txtCodigo.setBackground(new java.awt.Color(238, 238, 238));
+        txtCodigo.setLabelText("Ingresar Codigo de Barras");
+        txtCodigo.setLineColor(new java.awt.Color(22, 35, 105));
+        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodigoActionPerformed(evt);
+            }
+        });
+
+        txtCantidad.setBackground(new java.awt.Color(238, 238, 238));
+        txtCantidad.setLabelText("Cantidad de productos a devolver");
+        txtCantidad.setLineColor(new java.awt.Color(22, 35, 105));
+        txtCantidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCantidadActionPerformed(evt);
+            }
+        });
+
+        btnDevolver1.setBackground(new java.awt.Color(57, 78, 194));
+        btnDevolver1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnDevolver1.setForeground(new java.awt.Color(255, 255, 255));
+        btnDevolver1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/actualizar.png"))); // NOI18N
+        btnDevolver1.setText("Devolver");
+        btnDevolver1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDevolver1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDevolver1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(btnDevolver1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtCantidad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE))
+                        .addGap(44, 44, 44))))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnDevolver1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+
+        materialTabbed1.addTab("Devolver con codigo de barra", jPanel6);
+
+        jPanel7.setBackground(new java.awt.Color(238, 238, 238));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel7.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        txtCantidad2.setBackground(new java.awt.Color(238, 238, 238));
+        txtCantidad2.setLabelText("Cantidad de productos a devolver");
+        txtCantidad2.setLineColor(new java.awt.Color(22, 35, 105));
+        txtCantidad2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCantidad2ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(txtCantidad2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 480, -1));
+
+        ComboBoxProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel7.add(ComboBoxProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 480, 34));
+
+        btnDevolver2.setBackground(new java.awt.Color(57, 78, 194));
+        btnDevolver2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnDevolver2.setForeground(new java.awt.Color(255, 255, 255));
+        btnDevolver2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/actualizar.png"))); // NOI18N
+        btnDevolver2.setText("Devolver");
+        btnDevolver2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDevolver2ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(btnDevolver2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 192, 40));
+
+        materialTabbed1.addTab("Devolucion en busqueda", jPanel7);
+
+        getContentPane().add(materialTabbed1, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 60, -1, 260));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/devolver.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
     private void limpiarPantalla(){
-        txtCantidad.setText("Cantidad de productos a devolver");
-        txtCantidad2.setText("Cantidad de productos a devolver");
-        txtCodigo.setText("Ingresar codigo de barras");
+        txtCantidad.setText("");
+        txtCantidad2.setText("");
+        txtCodigo.setText("");
     }
     
     private void actualizarComboBoxProducto(){
@@ -362,6 +295,8 @@ public class FrameDevolucion extends javax.swing.JFrame {
         String codigoBarras=txtCodigo.getText();
         if (search.buscarProducto(codigoBarras)){
             actualizarProductos(codigoBarras);
+        }else{
+            new MessageError(this,"Este producto no existe en la base de datos");
         }
     }
     
@@ -377,7 +312,7 @@ public class FrameDevolucion extends javax.swing.JFrame {
                 actualizarInventario(search.Id(),nuevaCantidad,producto);
             }
             else{
-                new FrameError(JF,"Solo se pueden agregar productos mayores a 0").setVisible(true);
+                new MessageError(this,"Solo se pueden agregar productos mayores a 0");
             }
         }catch(SQLException e){
         }
@@ -388,7 +323,7 @@ public class FrameDevolucion extends javax.swing.JFrame {
             Statement sts=con.createStatement();
             String actualizar="UPDATE productos SET cantidad = '"+nuevaCantidad+"' WHERE id = "+id;
             sts.executeUpdate(actualizar);
-            new FrameCorrecto(JF,"El producto '"+producto+"' fue actualizado").setVisible(true);
+            new MessageCorrect(this,"El producto '"+producto+"' fue actualizado",null);
             
             //agregar devolucion
             float precio=search.Precio();
@@ -397,7 +332,7 @@ public class FrameDevolucion extends javax.swing.JFrame {
             
         }catch(SQLException ex){
             System.out.println(ex);
-            new FrameError(JF,"El producto '"+producto+"' NO SE FUE actualizar").setVisible(true);
+            new MessageError(this,"El producto '"+producto+"' NO SE FUE actualizar");
         }
     } 
     
@@ -425,7 +360,7 @@ public class FrameDevolucion extends javax.swing.JFrame {
                 actualizarInventario(search.Id(),nuevaCantidad,producto);
             }
             else{
-                new FrameError(JF,"Solo se pueden agregar productos mayores a 0").setVisible(true);
+                new MessageError(this,"Solo se pueden agregar productos mayores a 0");
             }
             
             //agregar devolucion
@@ -460,57 +395,6 @@ public class FrameDevolucion extends javax.swing.JFrame {
         return "";
     }
     
-    private void txtCodigoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCodigoMousePressed
-        if(txtCodigo.getText().equals("Ingresar codigo de barras")){
-            txtCodigo.setText("");
-            txtCodigo.setForeground(Color.black);
-        }
-        
-        if(txtCantidad.getText().equals("Cantidad de productos a devolver") || txtCantidad.getText().equals("")){
-           txtCantidad.setText("Cantidad de productos a devolver");
-           txtCantidad.setForeground(Color.gray);
-        }
-        
-        if(txtCantidad2.getText().equals("Cantidad de productos a devolver") || txtCantidad2.getText().equals("")){
-           txtCantidad2.setText("Cantidad de productos a devolver");
-           txtCantidad2.setForeground(Color.gray);
-        }
-    }//GEN-LAST:event_txtCodigoMousePressed
-
-    private void txtCantidadMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCantidadMousePressed
-        if(txtCantidad.getText().equals("Cantidad de productos a devolver")){
-            txtCantidad.setText("");
-            txtCantidad.setForeground(Color.black);
-        }
-        
-        if(txtCodigo.getText().equals("Ingresar codigo de barras") || txtCodigo.getText().equals("")){
-           txtCodigo.setText("Ingresar codigo de barras");
-           txtCodigo.setForeground(Color.gray);
-        }
-        
-        if(txtCantidad2.getText().equals("Cantidad de productos a devolver") || txtCantidad2.getText().equals("")){
-           txtCantidad2.setText("Cantidad de productos a devolver");
-           txtCantidad2.setForeground(Color.gray);
-        }
-    }//GEN-LAST:event_txtCantidadMousePressed
-
-    private void txtCantidad2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCantidad2MousePressed
-        if(txtCantidad2.getText().equals("Cantidad de productos a devolver")){
-            txtCantidad2.setText("");
-            txtCantidad2.setForeground(Color.black);
-        }
-        
-        if(txtCodigo.getText().equals("Ingresar codigo de barras") || txtCodigo.getText().equals("")){
-           txtCodigo.setText("Ingresar codigo de barras");
-           txtCodigo.setForeground(Color.gray);
-        }
-        
-        if(txtCantidad.getText().equals("Cantidad de productos a devolver") || txtCantidad.getText().equals("")){
-           txtCantidad.setText("Cantidad de productos a devolver");
-           txtCantidad.setForeground(Color.gray);
-        }
-    }//GEN-LAST:event_txtCantidad2MousePressed
-
     private void labelExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelExitMouseClicked
         JF.apagarWallpaper();
         this.dispose();
@@ -522,7 +406,7 @@ public class FrameDevolucion extends javax.swing.JFrame {
     }//GEN-LAST:event_labelExitMouseEntered
 
     private void labelExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelExitMouseExited
-        panelBtnExit.setBackground(new Color(22,35,105));
+        panelBtnExit.setBackground(new Color(57,78,194));
         labelExit.setForeground(Color.black);
     }//GEN-LAST:event_labelExitMouseExited
 
@@ -535,28 +419,34 @@ public class FrameDevolucion extends javax.swing.JFrame {
         mouseY=evt.getY();
     }//GEN-LAST:event_jPanel5MousePressed
 
+    private void txtCantidad2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidad2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCantidad2ActionPerformed
+
+    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoActionPerformed
+
+    private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCantidadActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBoxProducto;
     private javax.swing.JButton btnDevolver1;
     private javax.swing.JButton btnDevolver2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel labelExit;
+    private tabbed.MaterialTabbed materialTabbed1;
     private javax.swing.JPanel panelBtnExit;
-    private javax.swing.JTextField txtCantidad;
-    private javax.swing.JTextField txtCantidad2;
-    private javax.swing.JTextField txtCodigo;
+    private textfield.TextField txtCantidad;
+    private textfield.TextField txtCantidad2;
+    private textfield.TextField txtCodigo;
     // End of variables declaration//GEN-END:variables
 }

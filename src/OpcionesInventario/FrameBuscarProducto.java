@@ -3,6 +3,8 @@ import ClasesGlobales.Buscar;
 import ClasesGlobales.convertir;
 import Notificaciones.FrameCorrecto;
 import Notificaciones.FrameError;
+import Notificaciones.MessageCorrect;
+import Notificaciones.MessageError;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -128,19 +130,19 @@ public class FrameBuscarProducto extends javax.swing.JFrame {
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, -1, -1));
 
         jLabel8.setText("Ganancia");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
         jLabel9.setText("Se vende por");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
         jLabel10.setText("Ubicacion");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
 
         jLabel11.setText("Cantidad");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
 
         jLabel12.setText("Usa inventario");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
 
         txtId.setEditable(false);
         txtId.setBackground(new java.awt.Color(255, 255, 255));
@@ -165,19 +167,19 @@ public class FrameBuscarProducto extends javax.swing.JFrame {
         jPanel2.add(txtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 180, -1));
 
         txtGanancia.setEditable(false);
-        jPanel2.add(txtGanancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 180, -1));
+        jPanel2.add(txtGanancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 180, -1));
 
         txtSeVendePor.setEditable(false);
-        jPanel2.add(txtSeVendePor, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 180, -1));
+        jPanel2.add(txtSeVendePor, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 180, -1));
 
         txtUbicacion.setEditable(false);
-        jPanel2.add(txtUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 180, -1));
+        jPanel2.add(txtUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 180, -1));
 
         txtCantidad.setEditable(false);
-        jPanel2.add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 180, -1));
+        jPanel2.add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 180, -1));
 
         txtUsaInventario.setEditable(false);
-        jPanel2.add(txtUsaInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 180, -1));
+        jPanel2.add(txtUsaInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 180, -1));
 
         txtDescripcion.setEditable(false);
         txtDescripcion.setBackground(new java.awt.Color(238, 238, 238));
@@ -185,7 +187,7 @@ public class FrameBuscarProducto extends javax.swing.JFrame {
         txtDescripcion.setRows(5);
         jScrollPane1.setViewportView(txtDescripcion);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, -1, -1));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 320, -1));
 
         btnAgregarCarrito.setBackground(new java.awt.Color(22, 35, 105));
         btnAgregarCarrito.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -328,6 +330,7 @@ public class FrameBuscarProducto extends javax.swing.JFrame {
             llenarDatoPantalla();
         }
         else{
+            new MessageError(this,"No existe ningun producto con este codigo de barras");
             borrarPantalla();
         }
     }
@@ -369,15 +372,17 @@ public class FrameBuscarProducto extends javax.swing.JFrame {
     
     private void btnAgregarCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCarritoActionPerformed
         String codigoBarra=txtCodigoIngresado.getText();
+        
         if (search.buscarProducto(codigoBarra)){
             agregarProductoCarrito(codigoBarra);
             borrarPantalla();
             borrarTextoCodigo();
             this.dispose();
-            new FrameCorrecto(FI,"Producto agregado con exito").setVisible(true);
+            FI.apagarWallpaper();
+            new MessageCorrect(FI,"Producto agregado con exito",null);
         }
         else{
-            new FrameError(null,"Necesito un codigo valido").setVisible(true);
+            new MessageError(this,"Necesito un codigo valido");
         }
     }//GEN-LAST:event_btnAgregarCarritoActionPerformed
     

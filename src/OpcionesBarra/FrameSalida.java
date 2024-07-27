@@ -3,6 +3,8 @@ package OpcionesBarra;
 import ClasesGlobales.Agregar;
 import ClasesGlobales.convertir;
 import Notificaciones.FrameError;
+import Notificaciones.MessageCorrect;
+import Notificaciones.MessageError;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.sql.Connection;
@@ -27,6 +29,7 @@ public class FrameSalida extends javax.swing.JFrame {
         initComponents();
         limpiarPantalla();
         setIconImage(Toolkit.getDefaultToolkit().getImage("icono.png"));
+        this.setSize(918, 350);
         this.setResizable(false);
         this.setTitle("Salidas de caja");
         centrarPanel();
@@ -50,13 +53,12 @@ public class FrameSalida extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        txtSalida = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtDineroCaja = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        txtPorque = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txtSalida = new textfield.TextField();
+        txtPorque = new textfield.TextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         panelBtnExit = new javax.swing.JPanel();
@@ -68,22 +70,20 @@ public class FrameSalida extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("SALIDA");
-
-        txtSalida.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        txtSalida.setText("0");
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 204, 91));
         jLabel3.setText("TOTAL EN CAJA");
 
         txtDineroCaja.setEditable(false);
+        txtDineroCaja.setBackground(new java.awt.Color(255, 255, 255));
         txtDineroCaja.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        txtDineroCaja.setForeground(new java.awt.Color(0, 204, 91));
         txtDineroCaja.setText("0");
+        txtDineroCaja.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        btnGuardar.setBackground(new java.awt.Color(22, 35, 105));
+        btnGuardar.setBackground(new java.awt.Color(57, 78, 194));
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/actualizar.png"))); // NOI18N
@@ -95,62 +95,72 @@ public class FrameSalida extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("PORQUE");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/movimiento-dinero.png"))); // NOI18N
 
-        txtPorque.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        txtSalida.setLabelText("Salida de dinero");
+        txtSalida.setLineColor(new java.awt.Color(22, 35, 105));
+        txtSalida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSalidaActionPerformed(evt);
+            }
+        });
+
+        txtPorque.setLabelText("Nota del dinero");
+        txtPorque.setLineColor(new java.awt.Color(22, 35, 105));
+        txtPorque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPorqueActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(159, 159, 159)
-                .addComponent(jLabel2)
-                .addContainerGap(176, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(72, 72, 72)
-                            .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(txtPorque, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtDineroCaja, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                            .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(51, 51, 51)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(250, 375, Short.MAX_VALUE))
+                            .addComponent(txtPorque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtSalida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(txtSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(89, 89, 89))
+                            .addComponent(txtDineroCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPorque, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDineroCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(txtSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtPorque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDineroCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 44, -1, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 920, 310));
 
-        jPanel5.setBackground(new java.awt.Color(22, 35, 105));
+        jPanel5.setBackground(new java.awt.Color(57, 78, 194));
         jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel5.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -167,7 +177,7 @@ public class FrameSalida extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Salidas");
 
-        panelBtnExit.setBackground(new java.awt.Color(22, 35, 105));
+        panelBtnExit.setBackground(new java.awt.Color(57, 78, 194));
 
         labelExit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         labelExit.setForeground(new java.awt.Color(0, 0, 0));
@@ -209,7 +219,7 @@ public class FrameSalida extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 285, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 809, Short.MAX_VALUE)
                 .addComponent(panelBtnExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -223,7 +233,7 @@ public class FrameSalida extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, -1));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 918, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -234,9 +244,17 @@ public class FrameSalida extends javax.swing.JFrame {
             limpiarPantalla();
         }
         else{
-            new FrameError(JF,"Faltan datos por llenar").setVisible(true);
+            new MessageError(this,"Faltan datos por llenar");
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void txtSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSalidaActionPerformed
+
+    private void txtPorqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPorqueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPorqueActionPerformed
 
     private void labelExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelExitMouseClicked
         JF.apagarWallpaper();
@@ -249,7 +267,7 @@ public class FrameSalida extends javax.swing.JFrame {
     }//GEN-LAST:event_labelExitMouseEntered
 
     private void labelExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelExitMouseExited
-        panelBtnExit.setBackground(new Color(22,35,105));
+        panelBtnExit.setBackground(new Color(57,78,194));
         labelExit.setForeground(Color.black);
     }//GEN-LAST:event_labelExitMouseExited
 
@@ -280,10 +298,10 @@ public class FrameSalida extends javax.swing.JFrame {
         if(dineroTotal>=0){
             guardarEntradaSalida(-dineroSacado);
             actualizarSalida(dineroTotal);
-            JOptionPane.showMessageDialog(this,"El dinero de la caja fue actualizado de "+dineroCaja+" a "+dineroTotal);
+            new MessageCorrect(this,"El dinero de la caja fue actualizado de "+dineroCaja+" a "+dineroTotal,null);
         }
         else{
-            JOptionPane.showMessageDialog(this,"El dinero sacado no puede sobrepasar al dinero que hay en caja");
+            new MessageError(this,"El dinero sacado no puede sobrepasar al dinero que hay en caja");
         }
     }
     
@@ -364,16 +382,15 @@ public class FrameSalida extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel labelExit;
     private javax.swing.JPanel panelBtnExit;
     private javax.swing.JTextField txtDineroCaja;
-    private javax.swing.JTextField txtPorque;
-    private javax.swing.JTextField txtSalida;
+    private textfield.TextField txtPorque;
+    private textfield.TextField txtSalida;
     // End of variables declaration//GEN-END:variables
 }
