@@ -2,6 +2,7 @@ package puntoventa;
 
 import static ClasesGlobales.ConvertirNumeroATexto.convertirNumeroATexto;
 import ClasesGlobales.convertir;
+import Notificaciones.FrameError;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.math.BigDecimal;
@@ -29,6 +30,7 @@ public class FrameCobranza extends javax.swing.JFrame {
         float total=JF.getTotalCarritoNum();
         txtCobro.setText(total+"");
         txtTotalTexto.setText("("+convertirNumeroATexto(total)+")");
+        this.setSize(809, 550);
         this.setResizable(false);
         this.setTitle("Compra del producto");
         setIconImage(Toolkit.getDefaultToolkit().getImage("icono.png"));
@@ -53,16 +55,19 @@ public class FrameCobranza extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         txtTotalTexto = new javax.swing.JLabel();
-        txtEntrada1 = new javax.swing.JTextField();
+        inputTarjetaCredito = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        txtEntrada2 = new javax.swing.JTextField();
+        inputTarjetaDebito = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        txtEntrada3 = new javax.swing.JTextField();
+        txtCupones = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         panelBtnExit = new javax.swing.JPanel();
@@ -72,17 +77,15 @@ public class FrameCobranza extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setLocationByPlatform(true);
         setUndecorated(true);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Efectivo");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 160, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 160, -1));
 
         txtEntrada.setBackground(new java.awt.Color(255, 255, 255));
         txtEntrada.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
@@ -94,7 +97,7 @@ public class FrameCobranza extends javax.swing.JFrame {
                 txtEntradaKeyReleased(evt);
             }
         });
-        jPanel2.add(txtEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 158, 48));
+        jPanel2.add(txtEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 158, 48));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(57, 78, 194));
@@ -128,12 +131,12 @@ public class FrameCobranza extends javax.swing.JFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 235, 50));
+        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 430, 235, 50));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 204, 91));
         jLabel4.setText("Cambio");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 330, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, -1, -1));
 
         txtCambio.setEditable(false);
         txtCambio.setBackground(new java.awt.Color(255, 255, 255));
@@ -160,73 +163,84 @@ public class FrameCobranza extends javax.swing.JFrame {
         txtTotalTexto.setText("(cero)");
         jPanel2.add(txtTotalTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 100, 240, -1));
 
-        txtEntrada1.setBackground(new java.awt.Color(255, 255, 255));
-        txtEntrada1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        txtEntrada1.setForeground(new java.awt.Color(57, 78, 194));
-        txtEntrada1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtEntrada1.setText("0");
-        txtEntrada1.addKeyListener(new java.awt.event.KeyAdapter() {
+        inputTarjetaCredito.setBackground(new java.awt.Color(255, 255, 255));
+        inputTarjetaCredito.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        inputTarjetaCredito.setForeground(new java.awt.Color(57, 78, 194));
+        inputTarjetaCredito.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        inputTarjetaCredito.setText("0");
+        inputTarjetaCredito.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtEntrada1KeyReleased(evt);
+                inputTarjetaCreditoKeyReleased(evt);
             }
         });
-        jPanel2.add(txtEntrada1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 158, 48));
+        jPanel2.add(inputTarjetaCredito, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 158, 48));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Tarjeta Credito");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 160, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 160, -1));
 
-        txtEntrada2.setBackground(new java.awt.Color(255, 255, 255));
-        txtEntrada2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        txtEntrada2.setForeground(new java.awt.Color(57, 78, 194));
-        txtEntrada2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtEntrada2.setText("0");
-        txtEntrada2.addKeyListener(new java.awt.event.KeyAdapter() {
+        inputTarjetaDebito.setBackground(new java.awt.Color(255, 255, 255));
+        inputTarjetaDebito.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        inputTarjetaDebito.setForeground(new java.awt.Color(57, 78, 194));
+        inputTarjetaDebito.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        inputTarjetaDebito.setText("0");
+        inputTarjetaDebito.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtEntrada2KeyReleased(evt);
+                inputTarjetaDebitoKeyReleased(evt);
             }
         });
-        jPanel2.add(txtEntrada2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, 158, 48));
+        jPanel2.add(inputTarjetaDebito, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, 158, 48));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Tarjeta Debito");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 160, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 160, -1));
 
-        txtEntrada3.setBackground(new java.awt.Color(255, 255, 255));
-        txtEntrada3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        txtEntrada3.setForeground(new java.awt.Color(57, 78, 194));
-        txtEntrada3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtEntrada3.setText("0");
-        txtEntrada3.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtCupones.setBackground(new java.awt.Color(255, 255, 255));
+        txtCupones.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        txtCupones.setForeground(new java.awt.Color(57, 78, 194));
+        txtCupones.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCupones.setText("0");
+        txtCupones.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtEntrada3KeyReleased(evt);
+                txtCuponesKeyReleased(evt);
             }
         });
-        jPanel2.add(txtEntrada3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 240, 158, 48));
+        jPanel2.add(txtCupones, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, 158, 48));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Cupones");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, 160, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 220, 160, -1));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/cupon_0.png"))); // NOI18N
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 70, 70));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, 70, 70));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/dinero_0.png"))); // NOI18N
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 70, 50));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 70, 50));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/tarjeta_1.png"))); // NOI18N
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, 70, 50));
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, 70, 50));
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/tarjeta_0.png"))); // NOI18N
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 70, 50));
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, 70, 50));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-7, 41, 870, 500));
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Cliente");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, -1, -1));
+
+        jLabel15.setForeground(new java.awt.Color(57, 78, 194));
+        jLabel15.setText("Publico en General");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, -1, -1));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/cliente.png"))); // NOI18N
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         jPanel1.setBackground(new java.awt.Color(57, 78, 194));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -301,7 +315,7 @@ public class FrameCobranza extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -360,24 +374,28 @@ public class FrameCobranza extends javax.swing.JFrame {
         btnGuardar.setBackground(ColorBtn);
     }//GEN-LAST:event_btnGuardarMouseExited
 
-    private void txtEntrada1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEntrada1KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEntrada1KeyReleased
+    private void inputTarjetaCreditoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputTarjetaCreditoKeyReleased
+        guardarDinero();
+    }//GEN-LAST:event_inputTarjetaCreditoKeyReleased
 
-    private void txtEntrada2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEntrada2KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEntrada2KeyReleased
+    private void inputTarjetaDebitoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputTarjetaDebitoKeyReleased
+        guardarDinero();
+    }//GEN-LAST:event_inputTarjetaDebitoKeyReleased
 
-    private void txtEntrada3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEntrada3KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEntrada3KeyReleased
+    private void txtCuponesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCuponesKeyReleased
+        guardarDinero();
+    }//GEN-LAST:event_txtCuponesKeyReleased
     
     private void cobrar(){
         //comporbaremos que los datos si se pueden convertir a float
         try{
-            float cobrar=Float.parseFloat(txtCobro.getText());
-            float dineroRecibido=Float.parseFloat(txtEntrada.getText());
-            float cambio=dineroRecibido-cobrar;
+            float cobrar=Float.parseFloat(txtCobro.getText()); //el dinero a cobrar
+            float dineroRecibido=Float.parseFloat(txtEntrada.getText()); //efectivo
+            float tarjetaCredito=Float.parseFloat(inputTarjetaCredito.getText());
+            float tarjetaDebito=Float.parseFloat(inputTarjetaDebito.getText());
+            float cupones=Float.parseFloat(txtCupones.getText());
+            
+            float cambio=(dineroRecibido+tarjetaCredito+tarjetaDebito+cupones)-cobrar;
             
             //ver si el cambio es mayor al dinero que tengo en caja
             if(cambio<=dineroActual() && cambio>=0){
@@ -387,26 +405,42 @@ public class FrameCobranza extends javax.swing.JFrame {
                 new FrameComprarTicket(con,JF).setVisible(true); 
             }
             else{
-                JOptionPane.showMessageDialog(this,"No hay suficiente dinero en caja para el cambio");
+                new FrameError(null,"No hay suficiente dinero en caja para el cambio").setVisible(true);
+                //JOptionPane.showMessageDialog(this,"No hay suficiente dinero en caja para el cambio");
             }
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this,"Uno de los datos esta mal escrito");
+            new FrameError(null,"Uno de los datos esta mal escrito").setVisible(true);
+            //JOptionPane.showMessageDialog(this,"Uno de los datos esta mal escrito");
         } 
     }
     
-    private void guardarDinero(){
-        //comporbaremos que los datos si se pueden convertir a float
-        try{
-            float cobrar=Float.parseFloat(txtCobro.getText());
-            float dineroRecibido=Float.parseFloat(txtEntrada.getText());
-            float cambio=dineroRecibido-cobrar;
-            
-            //ver si el cambio es mayor al dinero que tengo en caja
-            BigDecimal totalRounded = new BigDecimal(cambio).setScale(2, RoundingMode.HALF_UP); //esto es para redondear a 2 cifras
-            txtCambio.setText(totalRounded+"");
-        }catch(Exception e){
+    private void guardarDinero() {
+        try {
+            float cobrar = Float.parseFloat(txtCobro.getText()); // el dinero a cobrar
+
+            // Comprobar y asignar valores a las variables, o 0 si no son válidos
+            float dineroRecibido = parseOrZero(txtEntrada.getText());
+            float tarjetaCredito = parseOrZero(inputTarjetaCredito.getText());
+            float tarjetaDebito = parseOrZero(inputTarjetaDebito.getText());
+            float cupones = parseOrZero(txtCupones.getText());
+
+            float cambio = (dineroRecibido + tarjetaCredito + tarjetaDebito + cupones) - cobrar;
+
+            // Redondear a 2 cifras
+            BigDecimal totalRounded = new BigDecimal(cambio).setScale(2, RoundingMode.HALF_UP);
+            txtCambio.setText(totalRounded.toString());
+        } catch (Exception e) {
             txtCambio.setText("Error");
-        }    
+        }
+    }
+    
+    // Método auxiliar para convertir el texto a float, o devolver 0 si no es válido
+    private float parseOrZero(String text) {
+        try {
+            return Float.parseFloat(text);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
     }
     
     private float dineroActual(){
@@ -430,17 +464,22 @@ public class FrameCobranza extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JTextField inputTarjetaCredito;
+    private javax.swing.JTextField inputTarjetaDebito;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -451,10 +490,8 @@ public class FrameCobranza extends javax.swing.JFrame {
     private javax.swing.JPanel panelBtnExit;
     private javax.swing.JTextField txtCambio;
     private javax.swing.JTextField txtCobro;
+    private javax.swing.JTextField txtCupones;
     private javax.swing.JTextField txtEntrada;
-    private javax.swing.JTextField txtEntrada1;
-    private javax.swing.JTextField txtEntrada2;
-    private javax.swing.JTextField txtEntrada3;
     private javax.swing.JLabel txtTotalTexto;
     // End of variables declaration//GEN-END:variables
 }

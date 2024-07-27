@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/USER/Desktop/Proyectos/BestPoint/BestPoint%204.0/src/Membresia/FrameMembresia.java</file>
-            <file>file:/C:/Users/USER/Desktop/Proyectos/BestPoint/BestPoint%204.0/src/puntoventa/Conexion.java</file>
+            <file>file:/C:/Users/USER/Desktop/Proyectos/BestPoint/BestPoint%204.0/src/puntoventa/FrameInventario.java</file>
+            <file>file:/C:/Users/USER/Desktop/Proyectos/BestPoint/BestPoint%204.0/src/puntoventa/FrameCobranza.java</file>
+            <file>file:/C:/Users/USER/Desktop/Proyectos/BestPoint/BestPoint%204.0/src/puntoventa/FrameComprarTicket.java</file>
             <file>file:/C:/Users/USER/Desktop/Proyectos/BestPoint/BestPoint%204.0/src/puntoventa/PuntoVenta.java</file>
-            <file>file:/C:/Users/USER/Desktop/Proyectos/BestPoint/BestPoint%204.0/src/Notificaciones/FrameCorrecto.java</file>
+            <file>file:/C:/Users/USER/Desktop/Proyectos/BestPoint/BestPoint%204.0/src/ClasesGlobales/ConvertirNumeroATexto.java</file>
         </group>
     </open-files>
 </project-private>

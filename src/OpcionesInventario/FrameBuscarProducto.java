@@ -6,8 +6,10 @@ import Notificaciones.FrameError;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import puntoventa.FrameInventario;
 
 public class FrameBuscarProducto extends javax.swing.JFrame {
@@ -17,6 +19,8 @@ public class FrameBuscarProducto extends javax.swing.JFrame {
     FrameInventario FI;
     int mouseX;
     int mouseY;
+    String rutaImg="";
+    
     public FrameBuscarProducto(FrameInventario FI,Connection con) {
         this.con=con;
         this.search=new Buscar(con);
@@ -51,7 +55,6 @@ public class FrameBuscarProducto extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -72,22 +75,27 @@ public class FrameBuscarProducto extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescripcion = new javax.swing.JTextArea();
         btnAgregarCarrito = new javax.swing.JButton();
+        labelImg = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         panelBtnExit = new javax.swing.JPanel();
         labelExit = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
         setLocationByPlatform(true);
         setUndecorated(true);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtCodigoIngresado.setBackground(new java.awt.Color(238, 238, 238));
+        txtCodigoIngresado.setBackground(new java.awt.Color(255, 255, 255));
         txtCodigoIngresado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtCodigoIngresado.setText("Ingresa o busca un Codigo de Barras");
-        txtCodigoIngresado.setBorder(null);
+        txtCodigoIngresado.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         txtCodigoIngresado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 txtCodigoIngresadoMousePressed(evt);
@@ -98,48 +106,78 @@ public class FrameBuscarProducto extends javax.swing.JFrame {
                 txtCodigoIngresadoKeyReleased(evt);
             }
         });
-        jPanel1.add(txtCodigoIngresado, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 290, 40));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 300, 10));
+        jPanel1.add(txtCodigoIngresado, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 290, 40));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 730, 10));
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Nombre");
-
-        jLabel2.setText("ID");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
 
         jLabel5.setText("Descripcion");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
 
         jLabel6.setText("Codigo de barras");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, -1, -1));
 
-        jLabel7.setText("Costo");
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(22, 35, 105));
+        jLabel7.setText("$");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, -1, -1));
 
         jLabel8.setText("Ganancia");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
 
         jLabel9.setText("Se vende por");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
 
         jLabel10.setText("Ubicacion");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
 
         jLabel11.setText("Cantidad");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
 
         jLabel12.setText("Usa inventario");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
 
         txtId.setEditable(false);
+        txtId.setBackground(new java.awt.Color(255, 255, 255));
+        txtId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtId.setText("id");
+        txtId.setBorder(null);
+        jPanel2.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, -1));
 
         txtNombre.setEditable(false);
+        txtNombre.setForeground(new java.awt.Color(57, 78, 194));
+        jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 180, -1));
 
         txtCodigoBarras.setEditable(false);
+        jPanel2.add(txtCodigoBarras, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 180, -1));
 
         txtCosto.setEditable(false);
+        txtCosto.setBackground(new java.awt.Color(255, 255, 255));
+        txtCosto.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtCosto.setForeground(new java.awt.Color(22, 35, 105));
+        txtCosto.setText("0.0");
+        txtCosto.setBorder(null);
+        jPanel2.add(txtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 180, -1));
 
         txtGanancia.setEditable(false);
+        jPanel2.add(txtGanancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 180, -1));
 
         txtSeVendePor.setEditable(false);
+        jPanel2.add(txtSeVendePor, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 180, -1));
 
         txtUbicacion.setEditable(false);
+        jPanel2.add(txtUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 180, -1));
 
         txtCantidad.setEditable(false);
+        jPanel2.add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 180, -1));
 
         txtUsaInventario.setEditable(false);
+        jPanel2.add(txtUsaInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 180, -1));
 
         txtDescripcion.setEditable(false);
         txtDescripcion.setBackground(new java.awt.Color(238, 238, 238));
@@ -147,100 +185,31 @@ public class FrameBuscarProducto extends javax.swing.JFrame {
         txtDescripcion.setRows(5);
         jScrollPane1.setViewportView(txtDescripcion);
 
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, -1, -1));
+
+        btnAgregarCarrito.setBackground(new java.awt.Color(22, 35, 105));
+        btnAgregarCarrito.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnAgregarCarrito.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregarCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/agregar.png"))); // NOI18N
         btnAgregarCarrito.setText("Agregar a carrito");
+        btnAgregarCarrito.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregarCarrito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarCarritoActionPerformed(evt);
             }
         });
+        jPanel2.add(btnAgregarCarrito, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 350, -1, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel5))
-                .addGap(44, 44, 44)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAgregarCarrito)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtId)
-                        .addComponent(txtNombre)
-                        .addComponent(txtCodigoBarras)
-                        .addComponent(txtCosto)
-                        .addComponent(txtGanancia)
-                        .addComponent(txtSeVendePor)
-                        .addComponent(txtUbicacion)
-                        .addComponent(txtCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                        .addComponent(txtUsaInventario))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtCodigoBarras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(txtCosto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(txtGanancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtSeVendePor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(txtUbicacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(txtUsaInventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnAgregarCarrito)
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
+        labelImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/imgP.png"))); // NOI18N
+        jPanel2.add(labelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 700, 10));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 400, 420));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 730, 400));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(22, 35, 105));
         jLabel3.setText("Codigo del producto");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, -1, -1));
 
         jPanel4.setBackground(new java.awt.Color(22, 35, 105));
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -315,7 +284,19 @@ public class FrameBuscarProducto extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, -1));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, -1));
+
+        jButton1.setBackground(new java.awt.Color(22, 35, 105));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/busqueda.png"))); // NOI18N
+        jButton1.setText("Buscar");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 110, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -325,7 +306,7 @@ public class FrameBuscarProducto extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
         );
 
         pack();
@@ -343,6 +324,7 @@ public class FrameBuscarProducto extends javax.swing.JFrame {
     private void buscarCodigo(){
         String codigoBarra=txtCodigoIngresado.getText();
         if (search.buscarProducto(codigoBarra)){
+            buscarImgProducto();
             llenarDatoPantalla();
         }
         else{
@@ -368,16 +350,21 @@ public class FrameBuscarProducto extends javax.swing.JFrame {
     }
     
     private void borrarPantalla(){
-            txtId.setText("");
-            txtCantidad.setText("");
-            txtCodigoBarras.setText("");
-            txtCosto.setText("");
-            txtDescripcion.setText("");
-            txtGanancia.setText(""); //
-            txtNombre.setText("");
-            txtSeVendePor.setText("");
-            txtUbicacion.setText("");
-            txtUsaInventario.setText("");    
+        txtId.setText("");
+        txtCantidad.setText("");
+        txtCodigoBarras.setText("");
+        txtCosto.setText("0.0");
+        txtDescripcion.setText("");
+        txtGanancia.setText(""); //
+        txtNombre.setText("");
+        txtSeVendePor.setText("");
+        txtUbicacion.setText("");
+        txtUsaInventario.setText("");    
+        
+        //reiniciar imagen del producto si no buscaste nada
+        String rutaProyecto=System.getProperty("user.dir");
+        rutaImg=rutaProyecto+"\\src\\Img\\imgP.png";
+        actualizarImgProducto();
     }
     
     private void btnAgregarCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCarritoActionPerformed
@@ -386,15 +373,16 @@ public class FrameBuscarProducto extends javax.swing.JFrame {
             agregarProductoCarrito(codigoBarra);
             borrarPantalla();
             borrarTextoCodigo();
+            this.dispose();
             new FrameCorrecto(FI,"Producto agregado con exito").setVisible(true);
         }
         else{
-            new FrameError(FI,"Necesito un codigo valido").setVisible(true);
+            new FrameError(null,"Necesito un codigo valido").setVisible(true);
         }
     }//GEN-LAST:event_btnAgregarCarritoActionPerformed
     
     private void txtCodigoIngresadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoIngresadoKeyReleased
-        buscarCodigo();
+        
     }//GEN-LAST:event_txtCodigoIngresadoKeyReleased
 
     private void labelExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelExitMouseClicked
@@ -420,6 +408,10 @@ public class FrameBuscarProducto extends javax.swing.JFrame {
         mouseX=evt.getX();
         mouseY=evt.getY();
     }//GEN-LAST:event_jPanel4MousePressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        buscarCodigo();
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     private void agregarProductoCarrito(String codigoBarra){
         FI.agregarProductoDesdeTerceros(codigoBarra);
@@ -439,14 +431,33 @@ public class FrameBuscarProducto extends javax.swing.JFrame {
             txtCodigoIngresado.setForeground(Color.black);
         }
     }
+    
+    private void actualizarImgProducto(){
+        Image img=new ImageIcon(rutaImg).getImage();
+        ImageIcon icono=new ImageIcon(img.getScaledInstance(labelImg.getWidth(), labelImg.getHeight(),Image.SCALE_SMOOTH ));
+        labelImg.setIcon(icono);        
+    }
+    
+    private void buscarImgProducto(){   
+        //obtenemos la direcion de su imagen y cargamos la ruta 
+        rutaImg=search.rutaImg();
+        File archivo = new File(rutaImg);      
+        //si no existe el archivo cargamos la imagen de muestra
+        if (!archivo.exists()) {
+            String rutaProyecto=System.getProperty("user.dir");
+            rutaImg=rutaProyecto+"\\src\\Img\\imgP.png";
+        }
+        
+        actualizarImgProducto();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarCarrito;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -459,7 +470,9 @@ public class FrameBuscarProducto extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel labelExit;
+    private javax.swing.JLabel labelImg;
     private javax.swing.JPanel panelBtnExit;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtCodigoBarras;
