@@ -281,6 +281,7 @@ public class FrameSalida extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel5MousePressed
     
     private void limpiarPantalla(){
+        txtSalida.setText("");
         txtDineroCaja.setText("0");
         this.txtDineroCaja.setText(dineroActual()+"");
         txtPorque.setText("");

@@ -30,6 +30,7 @@ import OpcionesBarra.FrameSalida;
 import OpcionesBarra.FrameVentasHoy;
 import OpcionesInventario.FrameBuscarProducto;
 import Productos.FrameProductos;
+import Productos.FrameTablaProductos;
 import Reportes.FrameEscojerFechaReporte;
 import Reportes.FrameReporte;
 import Ventas.FrameVentas;
@@ -780,7 +781,10 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         );
         btnProductosLayout.setVerticalGroup(
             btnProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labelV3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnProductosLayout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(labelV3)
+                .addGap(18, 18, 18))
         );
 
         javax.swing.GroupLayout PanelBtnsLayout = new javax.swing.GroupLayout(PanelBtns);
@@ -1404,7 +1408,7 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         if(inventarioApagado){
             //preguntar si quiere eliminar el carrito
             MessageDialog ms=new MessageDialog(this);
-            ms.showMessage("Eliminar productos del carrito","¿Quiere eleminar todos los datos del carrito?");
+            ms.showMessage("Eliminar productos del carrito","¿Quiere eliminar todos los datos del carrito?");
             if(ms.getMessageType()==MessageDialog.MessageType.OK){
                 borrarTabla();
                 new MessageCorrect(this,"El carrito fue baseado con exito",this);
@@ -1518,7 +1522,8 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
 
     private void btnProductosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductosMousePressed
         if(inventarioApagado){
-            new FrameProductos(con,this).setVisible(true);
+            new FrameTablaProductos(con,this).setVisible(true);
+            //new FrameProductos(con,this).setVisible(true);
         }
     }//GEN-LAST:event_btnProductosMousePressed
 

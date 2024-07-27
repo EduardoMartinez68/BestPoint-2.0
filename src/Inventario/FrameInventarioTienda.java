@@ -7,11 +7,17 @@ import ClasesGlobales.Eliminar;
 import ClasesGlobales.convertir;
 import Notificaciones.FrameCorrecto;
 import Notificaciones.FrameError;
+import Notificaciones.MessageCorrect;
+import Notificaciones.MessageError;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javaswingdev.message.MessageDialog;
+import javax.swing.ImageIcon;
 import puntoventa.FrameInventario;
 
 public class FrameInventarioTienda extends javax.swing.JFrame implements Runnable{
@@ -31,6 +37,7 @@ public class FrameInventarioTienda extends javax.swing.JFrame implements Runnabl
     String departamento;
     int cantidad;
     
+    String rutaImg;
     //detector de teclas 
     Atajos teclado=new Atajos();
     Thread h1;    
@@ -108,6 +115,7 @@ public class FrameInventarioTienda extends javax.swing.JFrame implements Runnabl
         jLabel20 = new javax.swing.JLabel();
         panelBtnExit = new javax.swing.JPanel();
         labelExit = new javax.swing.JLabel();
+        labelImg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocationByPlatform(true);
@@ -152,8 +160,12 @@ public class FrameInventarioTienda extends javax.swing.JFrame implements Runnabl
 
         jLabel8.setText("Nombre producto");
 
+        btnActualizarInventario.setBackground(new java.awt.Color(57, 78, 194));
+        btnActualizarInventario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnActualizarInventario.setForeground(new java.awt.Color(255, 255, 255));
         btnActualizarInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/caja.png"))); // NOI18N
         btnActualizarInventario.setText("Actualizar inventario");
+        btnActualizarInventario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnActualizarInventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarInventarioActionPerformed(evt);
@@ -180,73 +192,75 @@ public class FrameInventarioTienda extends javax.swing.JFrame implements Runnabl
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtDepartamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txtPrecioCosto1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel12))
-                            .addGap(48, 48, 48)
-                            .addComponent(txtSeVendePor1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel7)
-                                .addComponent(jLabel8))
-                            .addGap(20, 20, 20)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtNombreProducto1, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
-                                .addComponent(txtCodigoBarras))))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnActualizarInventario)
-                            .addComponent(txtExistencia1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel7))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtCodigoBarras, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNombreProducto1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel13)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel6)
+                            .addGap(48, 48, 48)
+                            .addComponent(txtSeVendePor1))
+                        .addComponent(txtDepartamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel12)
+                            .addGap(49, 49, 49)
+                            .addComponent(txtPrecioCosto1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel14)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnActualizarInventario)
+                                .addComponent(txtExistencia1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtNombreProducto1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtCodigoBarras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSeVendePor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(txtCodigoBarras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(txtPrecioCosto1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jLabel6)
+                    .addComponent(txtSeVendePor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPrecioCosto1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(txtDepartamento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(txtExistencia1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtExistencia1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnActualizarInventario)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addGap(123, 123, 123))
         );
 
         jTabbedPane1.addTab("Editar inventario", jPanel3);
 
         jPanel9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        btnEliminar.setBackground(new java.awt.Color(245, 71, 71));
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/basura.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -341,32 +355,36 @@ public class FrameInventarioTienda extends javax.swing.JFrame implements Runnabl
                     .addComponent(txtExistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEliminar)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Eliminar inventario", jPanel9);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 90, -1, 370));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 170, -1, 290));
 
+        btnBusqueda.setBackground(new java.awt.Color(57, 78, 194));
+        btnBusqueda.setForeground(new java.awt.Color(255, 255, 255));
         btnBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/busqueda.png"))); // NOI18N
+        btnBusqueda.setText("Buscar");
+        btnBusqueda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBusquedaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 40, -1));
+        getContentPane().add(btnBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 120, 30));
 
         txtBarraBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBarraBusquedaKeyReleased(evt);
             }
         });
-        getContentPane().add(txtBarraBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 290, -1));
+        getContentPane().add(txtBarraBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 42, 290, 30));
 
         jLabel3.setText("Codigo de barras");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
-        jPanel7.setBackground(new java.awt.Color(22, 35, 105));
+        jPanel7.setBackground(new java.awt.Color(57, 78, 194));
         jPanel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel7.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -383,7 +401,7 @@ public class FrameInventarioTienda extends javax.swing.JFrame implements Runnabl
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Inventario");
 
-        panelBtnExit.setBackground(new java.awt.Color(22, 35, 105));
+        panelBtnExit.setBackground(new java.awt.Color(57, 78, 194));
 
         labelExit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         labelExit.setForeground(new java.awt.Color(0, 0, 0));
@@ -439,6 +457,9 @@ public class FrameInventarioTienda extends javax.swing.JFrame implements Runnabl
 
         getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1160, 30));
 
+        labelImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/imgP.png"))); // NOI18N
+        getContentPane().add(labelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 50, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -493,8 +514,13 @@ public class FrameInventarioTienda extends javax.swing.JFrame implements Runnabl
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         if(!txtCodigoBarras.getText().equals("")){
-            borrarProductoTabla();
-            limpiarPantalla();
+            //preguntar si quiere eliminar el producto
+            MessageDialog ms=new MessageDialog(this);
+            ms.showMessage("Eliminar productos","¿Quiere eliminar este producto?");
+            if(ms.getMessageType()==MessageDialog.MessageType.OK){
+                borrarProductoTabla();
+                limpiarPantalla();
+            }
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
     
@@ -513,7 +539,7 @@ public class FrameInventarioTienda extends javax.swing.JFrame implements Runnabl
     }//GEN-LAST:event_labelExitMouseEntered
 
     private void labelExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelExitMouseExited
-        panelBtnExit.setBackground(new Color(22,35,105));
+        panelBtnExit.setBackground(new Color(57,78,194));
         labelExit.setForeground(Color.black);
     }//GEN-LAST:event_labelExitMouseExited
 
@@ -553,6 +579,11 @@ public class FrameInventarioTienda extends javax.swing.JFrame implements Runnabl
         seVendePor="";
         departamento="";
         cantidad=0;
+        
+        //eliminar imagen del producto
+        String rutaProyecto=System.getProperty("user.dir");
+        rutaImg=rutaProyecto+"\\src\\Img\\imgP.png";
+        actualizarImgProducto();
     }
     
     private void actualizarProducto(){
@@ -561,9 +592,9 @@ public class FrameInventarioTienda extends javax.swing.JFrame implements Runnabl
             String actualizar="update productos set cantidad = '"+txtExistencia1.getText()+"' where id = "+search.Id();
             sts.executeUpdate(actualizar); 
             actualizarTablaCarrito();
-            new FrameCorrecto(null,"El producto '"+nombre+"' fue actualizado").setVisible(true);
+            new MessageCorrect(this,"El producto '"+nombre+"' fue actualizado",null);
         }catch(SQLException ex){
-            new FrameError(null,"No se pudo actualizar el producto").setVisible(true);
+            new MessageError(this,"No se pudo actualizar el producto");
         }
     }
     
@@ -571,9 +602,9 @@ public class FrameInventarioTienda extends javax.swing.JFrame implements Runnabl
         try{
             delete.eliminarProducto(search.Id());
             actualizarTablaCarrito();
-            new FrameCorrecto(null,"El producto '"+nombre+"' fue eliminado correctamente").setVisible(true);
+            new MessageCorrect(this,"El producto '"+nombre+"' fue eliminado correctamente",null);
         }catch(SQLException ex){
-            new FrameError(null,"No se pudo eliminar el producto").setVisible(true);
+            new MessageError(this,"No se pudo eliminar el producto");
         }
     }
     
@@ -582,14 +613,34 @@ public class FrameInventarioTienda extends javax.swing.JFrame implements Runnabl
         System.out.println(codigoBarra);
         if(search.buscarProducto(codigoBarra)){
             obtenerLosDatosDelProducto();
+            buscarImgProducto();
         }
         else{
-            new FrameError(null,"El codigo de barras de existe").setVisible(true);
+            //new FrameError(null,"El codigo de barras de existe").setVisible(true);
+            new MessageError(this,"Este producto no existe");
         }
         
         txtBarraBusqueda.setText("");
     }
  
+    private void actualizarImgProducto(){
+        Image img=new ImageIcon(rutaImg).getImage();
+        ImageIcon icono=new ImageIcon(img.getScaledInstance(labelImg.getWidth(), labelImg.getHeight(),Image.SCALE_SMOOTH ));
+        labelImg.setIcon(icono);        
+    }
+    
+    private void buscarImgProducto(){   
+        //obtenemos la direcion de su imagen y cargamos la ruta 
+        rutaImg=search.rutaImg();
+        File archivo = new File(rutaImg);      
+        //si no existe el archivo cargamos la imagen de muestra
+        if (!archivo.exists()) {
+            String rutaProyecto=System.getProperty("user.dir");
+            rutaImg=rutaProyecto+"\\src\\Img\\imgP.png";
+        }
+        
+        actualizarImgProducto();
+    }
     
     private void obtenerLosDatosDelProducto(){
         try{
@@ -658,6 +709,7 @@ public class FrameInventarioTienda extends javax.swing.JFrame implements Runnabl
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel labelExit;
+    private javax.swing.JLabel labelImg;
     private javax.swing.JPanel panelBtnExit;
     private javax.swing.JTable tableInventario;
     private javax.swing.JTextField txtBarraBusqueda;

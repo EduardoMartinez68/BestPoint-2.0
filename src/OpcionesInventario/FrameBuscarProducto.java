@@ -379,7 +379,7 @@ public class FrameBuscarProducto extends javax.swing.JFrame {
             borrarTextoCodigo();
             this.dispose();
             FI.apagarWallpaper();
-            new MessageCorrect(FI,"Producto agregado con exito",null);
+            new MessageCorrect(FI,"Producto fue agregado con exito",null);
         }
         else{
             new MessageError(this,"Necesito un codigo valido");

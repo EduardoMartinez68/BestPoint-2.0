@@ -244,6 +244,7 @@ public class FrameEntradas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
    
     private void limpiarPantalla(){
+        txtEntrada.setText("");
         txtDineroCaja.setText("0");
         this.txtDineroCaja.setText(dineroActual()+"");
         txtPorque.setText("");
