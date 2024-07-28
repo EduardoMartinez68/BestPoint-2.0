@@ -9,6 +9,7 @@ package ClasesGlobales;
 
 import Notificaciones.FrameCorrecto;
 import Notificaciones.FrameError;
+import Notificaciones.MessageCorrect;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -240,7 +241,8 @@ public class Agregar {
                     +" VALUES ('"+nombre+"','"+direccion+"','"+correo+"','"+telefono+"','"+credito+"','"+0+"' )" );
             
             sts.executeBatch();
-            new FrameCorrecto(JF2,"Cliente agregado con exito").setVisible(true);
+            
+            //new FrameCorrecto(JF2,"Cliente agregado con exito").setVisible(true);
             //JOptionPane.showMessageDialog(JF,"Cliente agregado con exito");
         }
         catch(SQLException e){

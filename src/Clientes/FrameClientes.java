@@ -6,11 +6,15 @@ import ClasesGlobales.Eliminar;
 import ClasesGlobales.convertir;
 import Notificaciones.FrameCorrecto;
 import Notificaciones.FrameError;
+import Notificaciones.MessageCorrect;
+import Notificaciones.MessageError;
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javaswingdev.message.MessageDialog;
 import javax.swing.JOptionPane;
 import puntoventa.FrameInventario;
 
@@ -35,6 +39,10 @@ public class FrameClientes extends javax.swing.JFrame {
         actualizarVariables();
         actualizarTabla();
         centrarPanel();
+        this.setSize(910, 650);
+        this.setResizable(false);
+        setIconImage(Toolkit.getDefaultToolkit().getImage("icono.png"));
+        this.setTitle("Clientes");
     }
     
      private void centrarPanel(){
@@ -58,24 +66,25 @@ public class FrameClientes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaClientes = new javax.swing.JTable();
         btnBuscar = new javax.swing.JButton();
-        txtBuscar = new javax.swing.JTextField();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaClientes = new javaswingdev.swing.table.Table();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        panelBtnExit = new javax.swing.JPanel();
+        labelExit = new javax.swing.JLabel();
+        txtBuscar = new textfield.TextField();
+        jPanel1 = new javax.swing.JPanel();
+        materialTabbed1 = new tabbed.MaterialTabbed();
         jPanel2 = new javax.swing.JPanel();
         btnGuardarCliente = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        jLabel19 = new javax.swing.JLabel();
-        txtNuevoTelefono = new javax.swing.JTextField();
-        txtNuevoDomicilio = new javax.swing.JTextField();
-        jLabel22 = new javax.swing.JLabel();
-        txtNuevoCorreo = new javax.swing.JTextField();
-        jLabel23 = new javax.swing.JLabel();
-        txtNuevoNombre = new javax.swing.JTextField();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        txtNuevoCredito = new javax.swing.JTextField();
+        txtNuevoDomicilio = new textfield.TextField();
+        txtNuevoCredito = new textfield.TextField();
+        txtNuevoTelefono = new textfield.TextField();
+        txtNuevoCorreo = new textfield.TextField();
+        txtNuevoNombre = new textfield.TextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -89,18 +98,27 @@ public class FrameClientes extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         txtEditarCredito = new javax.swing.JTextField();
         txtEditarTelefono = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
-        panelBtnExit = new javax.swing.JPanel();
-        labelExit = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
         setLocationByPlatform(true);
         setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnBuscar.setBackground(new java.awt.Color(57, 78, 194));
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/busqueda.png"))); // NOI18N
+        btnBuscar.setText("Buscar");
+        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 43, 130, 40));
+
+        tablaClientes.setBackground(new java.awt.Color(255, 255, 255));
         tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -109,121 +127,18 @@ public class FrameClientes extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Codigo de Barras", "Nombre", "Descripcion", "Cantidad"
             }
         ));
-        jScrollPane1.setViewportView(tablaClientes);
+        jScrollPane2.setViewportView(tablaClientes);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 345, 357));
-
-        btnBuscar.setBackground(new java.awt.Color(22, 35, 105));
-        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/busqueda.png"))); // NOI18N
-        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 50, -1));
-        getContentPane().add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 320, -1));
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnGuardarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/caja.png"))); // NOI18N
-        btnGuardarCliente.setText("Guardar nuevo cliente");
-        btnGuardarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnGuardarCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarClienteActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnGuardarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 169, -1, -1));
-
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/circulo-cruzado.png"))); // NOI18N
-        btnCancelar.setText("Cancelar");
-        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 169, 141, -1));
-
-        jLabel19.setText("Telefono");
-        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 67, -1, -1));
-        jPanel2.add(txtNuevoTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 64, 209, -1));
-        jPanel2.add(txtNuevoDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 132, 209, -1));
-
-        jLabel22.setText("Domicilio ");
-        jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 135, -1, -1));
-        jPanel2.add(txtNuevoCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 98, 210, -1));
-
-        jLabel23.setText("Correo electronico");
-        jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 101, -1, -1));
-        jPanel2.add(txtNuevoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 8, 209, -1));
-
-        jLabel25.setText("Nombre");
-        jPanel2.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 8, -1, -1));
-
-        jLabel26.setText("Credito");
-        jPanel2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 36, -1, -1));
-        jPanel2.add(txtNuevoCredito, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 36, 208, -1));
-
-        jTabbedPane1.addTab("Nuevo cliente", jPanel2);
-
-        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel6.setText("Telefono");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 73, -1, -1));
-
-        jLabel7.setText("Credito");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 42, -1, -1));
-
-        jLabel8.setText("Nombre");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 8, -1, -1));
-
-        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/caja.png"))); // NOI18N
-        btnActualizar.setText("Actualizar cliente");
-        btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 181, -1, -1));
-        jPanel3.add(txtEditarNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 209, -1));
-
-        jLabel12.setText("Correo electronico");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 101, -1, -1));
-        jPanel3.add(txtEditarCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 209, -1));
-
-        jLabel13.setText("Domicilio");
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 129, -1, -1));
-        jPanel3.add(txtEditarDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 209, -1));
-
-        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/basura.png"))); // NOI18N
-        btnEliminar.setText("Eliminar");
-        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 181, 124, -1));
-        jPanel3.add(txtEditarCredito, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 209, -1));
-        jPanel3.add(txtEditarTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 210, -1));
-
-        jTabbedPane1.addTab("Editar/Eliminar cliente", jPanel3);
-
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 360, 250));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 410, 410));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("ADMINISTRACION DE CLIENTES");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
-        jPanel8.setBackground(new java.awt.Color(22, 35, 105));
+        jPanel8.setBackground(new java.awt.Color(57, 78, 194));
         jPanel8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel8.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -240,7 +155,7 @@ public class FrameClientes extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Clientes");
 
-        panelBtnExit.setBackground(new java.awt.Color(22, 35, 105));
+        panelBtnExit.setBackground(new java.awt.Color(57, 78, 194));
 
         labelExit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         labelExit.setForeground(new java.awt.Color(0, 0, 0));
@@ -282,7 +197,7 @@ public class FrameClientes extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 665, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 795, Short.MAX_VALUE)
                 .addComponent(panelBtnExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel8Layout.setVerticalGroup(
@@ -294,7 +209,153 @@ public class FrameClientes extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, -1));
+        getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, -1));
+
+        txtBuscar.setLabelText("Buscar unl cliente por su nombre");
+        txtBuscar.setLineColor(new java.awt.Color(22, 35, 105));
+        txtBuscar.setSelectionColor(new java.awt.Color(22, 35, 105));
+        getContentPane().add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 310, -1));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnGuardarCliente.setBackground(new java.awt.Color(57, 78, 194));
+        btnGuardarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/caja.png"))); // NOI18N
+        btnGuardarCliente.setText("Guardar nuevo cliente");
+        btnGuardarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarClienteActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnGuardarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 343, 180, 40));
+
+        btnCancelar.setBackground(new java.awt.Color(219, 68, 83));
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/circulo-cruzado.png"))); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 180, 40));
+
+        txtNuevoDomicilio.setLabelText("Direccion ");
+        txtNuevoDomicilio.setLineColor(new java.awt.Color(22, 35, 105));
+        txtNuevoDomicilio.setSelectionColor(new java.awt.Color(22, 35, 105));
+        jPanel2.add(txtNuevoDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 370, -1));
+
+        txtNuevoCredito.setLabelText("Credito del cliente *");
+        txtNuevoCredito.setLineColor(new java.awt.Color(22, 35, 105));
+        txtNuevoCredito.setSelectionColor(new java.awt.Color(22, 35, 105));
+        jPanel2.add(txtNuevoCredito, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 370, -1));
+
+        txtNuevoTelefono.setLabelText("telefono");
+        txtNuevoTelefono.setLineColor(new java.awt.Color(22, 35, 105));
+        txtNuevoTelefono.setSelectionColor(new java.awt.Color(22, 35, 105));
+        jPanel2.add(txtNuevoTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 370, -1));
+
+        txtNuevoCorreo.setLabelText("Correo electronico");
+        txtNuevoCorreo.setLineColor(new java.awt.Color(22, 35, 105));
+        txtNuevoCorreo.setSelectionColor(new java.awt.Color(22, 35, 105));
+        jPanel2.add(txtNuevoCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 370, -1));
+
+        txtNuevoNombre.setLabelText("Nombre del cliente *");
+        txtNuevoNombre.setLineColor(new java.awt.Color(22, 35, 105));
+        txtNuevoNombre.setSelectionColor(new java.awt.Color(22, 35, 105));
+        jPanel2.add(txtNuevoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 370, -1));
+
+        materialTabbed1.addTab("Nuevo cliente", jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setText("Telefono");
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 73, -1, -1));
+
+        jLabel7.setText("Credito");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 42, -1, -1));
+
+        jLabel8.setText("Nombre");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 8, -1, -1));
+
+        btnActualizar.setBackground(new java.awt.Color(57, 78, 194));
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/caja.png"))); // NOI18N
+        btnActualizar.setText("Actualizar cliente");
+        btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 181, -1, 40));
+
+        txtEditarNombre.setBackground(new java.awt.Color(255, 255, 255));
+        txtEditarNombre.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel3.add(txtEditarNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 209, -1));
+
+        jLabel12.setText("Correo electronico");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 101, -1, -1));
+
+        txtEditarCorreo.setBackground(new java.awt.Color(255, 255, 255));
+        txtEditarCorreo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel3.add(txtEditarCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 209, -1));
+
+        jLabel13.setText("Domicilio");
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 129, -1, -1));
+
+        txtEditarDomicilio.setBackground(new java.awt.Color(255, 255, 255));
+        txtEditarDomicilio.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel3.add(txtEditarDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 209, -1));
+
+        btnEliminar.setBackground(new java.awt.Color(219, 68, 83));
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/basura.png"))); // NOI18N
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 181, 124, 40));
+
+        txtEditarCredito.setBackground(new java.awt.Color(255, 255, 255));
+        txtEditarCredito.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel3.add(txtEditarCredito, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 209, -1));
+
+        txtEditarTelefono.setBackground(new java.awt.Color(255, 255, 255));
+        txtEditarTelefono.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel3.add(txtEditarTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 210, -1));
+
+        materialTabbed1.addTab("Editar/Eliminar cliente", jPanel3);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(447, Short.MAX_VALUE)
+                .addComponent(materialTabbed1, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addComponent(materialTabbed1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(99, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 910, 620));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -312,7 +373,7 @@ public class FrameClientes extends javax.swing.JFrame {
             guardarCliente();              
         }
         else{
-            JOptionPane.showMessageDialog(this,"Faltan datos por llenar como el nombre o el credito que puede tener el cliente que son campos obligatorios");
+            new MessageError(this,"Faltan datos por llenar como el nombre o el credito que puede tener el cliente que son campos obligatorios");
         }        
     }//GEN-LAST:event_btnGuardarClienteActionPerformed
 
@@ -321,7 +382,7 @@ public class FrameClientes extends javax.swing.JFrame {
             preguntarEliminacion();      
         }
         else{
-            JOptionPane.showMessageDialog(this,"No existe ningun dato a eliminar");
+            new MessageError(this,"No existe ningun dato a eliminar");
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
@@ -330,7 +391,7 @@ public class FrameClientes extends javax.swing.JFrame {
              actualizarCliente();      
         }
         else{
-            JOptionPane.showMessageDialog(this,"Faltan datos por llenar como el nombre o el credito que puede tener el cliente que son campos obligatorios");
+            new MessageError(this,"Faltan datos por llenar como el nombre o el credito que puede tener el cliente que son campos obligatorios");
         } 
     }//GEN-LAST:event_btnActualizarActionPerformed
 
@@ -345,7 +406,7 @@ public class FrameClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_labelExitMouseEntered
 
     private void labelExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelExitMouseExited
-        panelBtnExit.setBackground(new Color(22,35,105));
+        panelBtnExit.setBackground(new Color(57,78,194));
         labelExit.setForeground(Color.black);
     }//GEN-LAST:event_labelExitMouseExited
 
@@ -369,7 +430,7 @@ public class FrameClientes extends javax.swing.JFrame {
             Statement sts=con.createStatement();
             String actualizar="UPDATE clientes SET nombre = '"+nombre+"', direccion = '"+direccion+"', correo = '"+correo+"',telefono = '"+telefono+"',credito = '"+credito+"' WHERE id = "+idCliente;
             sts.executeUpdate(actualizar);    
-            new FrameCorrecto(null,"El cliente se actualizo correctamente").setVisible(true);
+            new MessageCorrect(this,"El cliente se actualizo correctamente",null).setVisible(true);
         }catch(SQLException ex){
             System.out.println("No se pudo actualizar el cliente");
         }
@@ -386,23 +447,26 @@ public class FrameClientes extends javax.swing.JFrame {
     }
     
     private void preguntarEliminarDeuda(){
-        //preguntar si quiere eliminar el carrito
-        int i=JOptionPane.showConfirmDialog(this, "¿Quiere eleminar al cliente '"+txtEditarNombre.getText()+"' ? \n"
+        //preguntar si quiere eliminar el cliente con deuda
+        MessageDialog ms=new MessageDialog(this);
+        ms.showMessage("Eliminar Cliente","¿Quiere eleminar al cliente '"+txtEditarNombre.getText()+"' ? \n"
                 + "Este cliente tiene una deuda de: "+deudaCliente+" y si lo eliminas se borrara tambien su adeudo");
-        if(i==0){
+        if(ms.getMessageType()==MessageDialog.MessageType.OK){
             delete.eliminarCliente(idCliente);
             limpiarPantalla();
-            new FrameCorrecto(null,"Eliminaste al cliente correctamente").setVisible(true);
+            new MessageCorrect(this,"Eliminaste al cliente correctamente",null);
         }
     }
     
     private void eliminarSinDeuda(){
-        //preguntar si quiere eliminar el carrito
-        int i=JOptionPane.showConfirmDialog(this, "¿Quiere eleminar al cliente '"+txtEditarNombre.getText()+"' ?");
-        if(i==0){
+        //preguntar si quiere eliminar el cliente
+        MessageDialog ms=new MessageDialog(this);
+        ms.showMessage("Eliminar Cliente","¿Quiere eleminar al cliente '"+txtEditarNombre.getText()+"' ? \n"
+                + "Este cliente tiene una deuda de: "+deudaCliente+" y si lo eliminas se borrara tambien su adeudo");
+        if(ms.getMessageType()==MessageDialog.MessageType.OK){
             delete.eliminarCliente(idCliente);
             limpiarPantalla();
-            new FrameCorrecto(null,"Eliminaste al cliente correctamente").setVisible(true);
+            new MessageCorrect(this,"Eliminaste al cliente correctamente",null);
         }
     }
     
@@ -412,7 +476,7 @@ public class FrameClientes extends javax.swing.JFrame {
             buscarCliente(nombreBuscar);
         }
         else{
-            new FrameError(null,"Escribe un nombre valido").setVisible(true);
+            new MessageError(this,"Escribe un nombre valido").setVisible(true);
         }
     }
     
@@ -439,9 +503,9 @@ public class FrameClientes extends javax.swing.JFrame {
         }
         txtBuscar.setText("");
         if(encontreCliente==false){
-            new FrameError(null,"El usuario no fue encontrado").setVisible(true);
+            new MessageError(this,"El usuario no fue encontrado").setVisible(true);
         }else{
-            new FrameCorrecto(null,"El usuario fue encontrado con exito").setVisible(true);       
+            new MessageCorrect(this,"El usuario fue encontrado con exito",null).setVisible(true);       
         }
     }
     
@@ -470,9 +534,11 @@ public class FrameClientes extends javax.swing.JFrame {
         
         add.agregarCliente(nombre,direccion,correo,telefono,credito);
         limpiarPantalla();
+        new MessageCorrect(this,"Cliente agregado con exito",null);
     }
     
     private void limpiarPantalla(){
+        txtBuscar.setText("");
         txtNuevoNombre.setText("");
         txtNuevoDomicilio.setText("");
         txtNuevoCorreo.setText("");
@@ -504,33 +570,29 @@ public class FrameClientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelExit;
+    private tabbed.MaterialTabbed materialTabbed1;
     private javax.swing.JPanel panelBtnExit;
-    private javax.swing.JTable tablaClientes;
-    private javax.swing.JTextField txtBuscar;
+    private javaswingdev.swing.table.Table tablaClientes;
+    private textfield.TextField txtBuscar;
     private javax.swing.JTextField txtEditarCorreo;
     private javax.swing.JTextField txtEditarCredito;
     private javax.swing.JTextField txtEditarDomicilio;
     private javax.swing.JTextField txtEditarNombre;
     private javax.swing.JTextField txtEditarTelefono;
-    private javax.swing.JTextField txtNuevoCorreo;
-    private javax.swing.JTextField txtNuevoCredito;
-    private javax.swing.JTextField txtNuevoDomicilio;
-    private javax.swing.JTextField txtNuevoNombre;
-    private javax.swing.JTextField txtNuevoTelefono;
+    private textfield.TextField txtNuevoCorreo;
+    private textfield.TextField txtNuevoCredito;
+    private textfield.TextField txtNuevoDomicilio;
+    private textfield.TextField txtNuevoNombre;
+    private textfield.TextField txtNuevoTelefono;
     // End of variables declaration//GEN-END:variables
 }
