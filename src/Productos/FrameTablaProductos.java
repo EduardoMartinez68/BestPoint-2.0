@@ -1,6 +1,7 @@
 package Productos;
 
 import Inventario.ActualizarTablaInventarioTienda;
+import Notificaciones.MessageError;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.sql.Connection;
@@ -16,7 +17,7 @@ public class FrameTablaProductos extends javax.swing.JFrame {
     Color ColorBtn=new Color(57,78,194);
     
     Color colorBtnFondo=new Color(57,78,194);
-    Color colorBtnFondoHover=new Color(238,238,238);
+    Color colorBtnFondoHover=new Color(41,57,137);
     
     int mouseX;
     int mouseY;
@@ -63,7 +64,7 @@ public class FrameTablaProductos extends javax.swing.JFrame {
         labelExit = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableInventario = new javaswingdev.swing.table.Table();
-        txtCodigoBarras = new textfield.TextField();
+        codigoBarrasBuscar = new textfield.TextField();
         btnGuardarProducto = new javax.swing.JButton();
         btnEliminar = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -165,9 +166,9 @@ public class FrameTablaProductos extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tableInventario);
 
-        txtCodigoBarras.setLabelText("Busca un producto por su codigo de barras");
-        txtCodigoBarras.setLineColor(new java.awt.Color(22, 35, 105));
-        txtCodigoBarras.setSelectionColor(new java.awt.Color(22, 35, 105));
+        codigoBarrasBuscar.setLabelText("Busca un producto por su codigo de barras");
+        codigoBarrasBuscar.setLineColor(new java.awt.Color(22, 35, 105));
+        codigoBarrasBuscar.setSelectionColor(new java.awt.Color(22, 35, 105));
 
         btnGuardarProducto.setBackground(new java.awt.Color(57, 78, 194));
         btnGuardarProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -191,6 +192,7 @@ public class FrameTablaProductos extends javax.swing.JFrame {
 
         btnEliminar.setBackground(new java.awt.Color(57, 78, 194));
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.setPreferredSize(new java.awt.Dimension(390, 46));
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnEliminarMouseEntered(evt);
@@ -204,6 +206,7 @@ public class FrameTablaProductos extends javax.swing.JFrame {
         });
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/documento-firmado.png"))); // NOI18N
         jLabel2.setText("Actualizar productos");
 
@@ -211,10 +214,10 @@ public class FrameTablaProductos extends javax.swing.JFrame {
         btnEliminar.setLayout(btnEliminarLayout);
         btnEliminarLayout.setHorizontalGroup(
             btnEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnEliminarLayout.createSequentialGroup()
-                .addContainerGap(116, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(77, 77, 77))
+            .addGroup(btnEliminarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+                .addContainerGap())
         );
         btnEliminarLayout.setVerticalGroup(
             btnEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,6 +229,7 @@ public class FrameTablaProductos extends javax.swing.JFrame {
 
         btnDepartamentos.setBackground(new java.awt.Color(57, 78, 194));
         btnDepartamentos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDepartamentos.setPreferredSize(new java.awt.Dimension(390, 46));
         btnDepartamentos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnDepartamentosMouseEntered(evt);
@@ -239,6 +243,7 @@ public class FrameTablaProductos extends javax.swing.JFrame {
         });
 
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/lineas-de-calendario.png"))); // NOI18N
         jLabel18.setText("Departamentos de Productos");
 
@@ -246,21 +251,22 @@ public class FrameTablaProductos extends javax.swing.JFrame {
         btnDepartamentos.setLayout(btnDepartamentosLayout);
         btnDepartamentosLayout.setHorizontalGroup(
             btnDepartamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnDepartamentosLayout.createSequentialGroup()
-                .addContainerGap(83, Short.MAX_VALUE)
-                .addComponent(jLabel18)
-                .addGap(30, 30, 30))
+            .addGroup(btnDepartamentosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+                .addContainerGap())
         );
         btnDepartamentosLayout.setVerticalGroup(
             btnDepartamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnDepartamentosLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel18)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         btnAgregar.setBackground(new java.awt.Color(57, 78, 194));
         btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregar.setPreferredSize(new java.awt.Dimension(390, 46));
         btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnAgregarMouseEntered(evt);
@@ -274,6 +280,7 @@ public class FrameTablaProductos extends javax.swing.JFrame {
         });
 
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/agregar.png"))); // NOI18N
         jLabel19.setText("Agregar un nuevo producto");
 
@@ -281,10 +288,10 @@ public class FrameTablaProductos extends javax.swing.JFrame {
         btnAgregar.setLayout(btnAgregarLayout);
         btnAgregarLayout.setHorizontalGroup(
             btnAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnAgregarLayout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
-                .addComponent(jLabel19)
-                .addGap(41, 41, 41))
+            .addGroup(btnAgregarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+                .addContainerGap())
         );
         btnAgregarLayout.setVerticalGroup(
             btnAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,15 +311,15 @@ public class FrameTablaProductos extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtCodigoBarras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(codigoBarrasBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnGuardarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnDepartamentos, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -325,9 +332,9 @@ public class FrameTablaProductos extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtCodigoBarras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(codigoBarrasBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -381,12 +388,24 @@ public class FrameTablaProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarProductoMouseExited
 
     private void btnGuardarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarProductoActionPerformed
-
+        //creamos la interfaz de edicion de productos 
+        FrameActualizarProductos frameActualizarProductos=new FrameActualizarProductos(con,JF);
+        
+        //esta funcion sirve para buscar si existe un producto con este codigo de barras. Si no existe lo dices
+        if(!frameActualizarProductos.buscarProducto(codigoBarrasBuscar.getText())){
+            codigoBarrasBuscar.setText("");
+            frameActualizarProductos.dispose(); //destruimos la interfaz que creamos
+            new MessageError(this,"El producto no fue encontrado"); //mostramos mensaje de error
+        }else{
+            //si existe un producto en la base de datos, mostraremos los datos en pantalla y ocultaremos esta interfaz
+            frameActualizarProductos.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnGuardarProductoActionPerformed
 
     private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
         btnEliminar.setBackground(colorBtnFondoHover);
-        jLabel2.setForeground(Color.BLACK);
+        //jLabel2.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnEliminarMouseEntered
 
     private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
@@ -401,7 +420,7 @@ public class FrameTablaProductos extends javax.swing.JFrame {
 
     private void btnDepartamentosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDepartamentosMouseEntered
         btnDepartamentos.setBackground(colorBtnFondoHover);
-        jLabel18.setForeground(Color.BLACK);
+        //jLabel18.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnDepartamentosMouseEntered
 
     private void btnDepartamentosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDepartamentosMouseExited
@@ -416,7 +435,7 @@ public class FrameTablaProductos extends javax.swing.JFrame {
 
     private void btnAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseEntered
         btnAgregar.setBackground(colorBtnFondoHover);
-        jLabel19.setForeground(Color.BLACK);
+        //jLabel19.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnAgregarMouseEntered
 
     private void btnAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseExited
@@ -434,6 +453,7 @@ public class FrameTablaProductos extends javax.swing.JFrame {
     private javax.swing.JPanel btnDepartamentos;
     private javax.swing.JPanel btnEliminar;
     private javax.swing.JButton btnGuardarProducto;
+    private textfield.TextField codigoBarrasBuscar;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -444,6 +464,5 @@ public class FrameTablaProductos extends javax.swing.JFrame {
     private javax.swing.JLabel labelExit;
     private javax.swing.JPanel panelBtnExit;
     private javaswingdev.swing.table.Table tableInventario;
-    private textfield.TextField txtCodigoBarras;
     // End of variables declaration//GEN-END:variables
 }

@@ -365,7 +365,7 @@ public class FrameProductos extends javax.swing.JFrame {
         });
         jPanel2.add(btnBorrarImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 95, -1));
 
-        jLabel20.setText("Precio por peso");
+        jLabel20.setText("* Precio por peso");
         jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, -1, -1));
 
         txtPrecioPeso.setEditable(false);
@@ -1039,7 +1039,7 @@ public class FrameProductos extends javax.swing.JFrame {
     
     private void guardarDatoProductos(){
         //obtener datos necesarios 
-        String nombre=txtCosto.getText();
+        String nombre=txtNombre.getText();
         String descripcion=txtDescripcion.getText();
         String codigoBarras=txtCodigo.getText().toString();
         float costo=conver.convertirStringFloat(txtCosto.getText().toString());
