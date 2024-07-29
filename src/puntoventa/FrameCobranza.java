@@ -20,6 +20,7 @@ public class FrameCobranza extends javax.swing.JFrame {
     
     int mouseX;
     int mouseY;
+    int idCliente=-1;
     Color colorBtnHover=new Color(46,69,209);
     Color ColorBtn=new Color(57,78,194);
     
@@ -66,7 +67,7 @@ public class FrameCobranza extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        labelNombreCliente = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -233,9 +234,9 @@ public class FrameCobranza extends javax.swing.JFrame {
         jLabel7.setText("Cliente");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, -1, -1));
 
-        jLabel15.setForeground(new java.awt.Color(57, 78, 194));
-        jLabel15.setText("Publico en General");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, -1, -1));
+        labelNombreCliente.setForeground(new java.awt.Color(57, 78, 194));
+        labelNombreCliente.setText("Publico en General");
+        jPanel2.add(labelNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, -1, -1));
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/cliente.png"))); // NOI18N
         jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
@@ -323,6 +324,11 @@ public class FrameCobranza extends javax.swing.JFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         cobrar();
     }//GEN-LAST:event_btnGuardarActionPerformed
+    
+    public void cambiarCliente(int idCliente,String nombreCliente){
+        this.idCliente=idCliente;
+        labelNombreCliente.setText(nombreCliente);
+    }
     
     private void centrarPanel(){
         int w=JF.getWidth()/2;
@@ -472,7 +478,6 @@ public class FrameCobranza extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -487,6 +492,7 @@ public class FrameCobranza extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel labelExit;
+    private javax.swing.JLabel labelNombreCliente;
     private javax.swing.JPanel panelBtnExit;
     private javax.swing.JTextField txtCambio;
     private javax.swing.JTextField txtCobro;

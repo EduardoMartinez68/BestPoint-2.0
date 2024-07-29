@@ -21,6 +21,7 @@ import Notificaciones.FrameDecision;
 import Notificaciones.FrameError;
 import Notificaciones.MessageCorrect;
 import Opciones.FrameCreacionHorarios;
+import OpcionesBarra.FrameAsignarCliente;
 import OpcionesBarra.FrameCompras2;
 import OpcionesBarra.FrameDevolucion;
 import OpcionesBarra.FrameEliminarProducto;
@@ -105,6 +106,7 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
     private Glass glass;
     private boolean show;
     
+    private int idCliente=-1;
     
     public FrameInventario(Connection con,String cajeroActual){
         this.con=con;
@@ -158,6 +160,7 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         labelFecha = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtNumCarrito = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
         btnDevolucion = new javax.swing.JButton();
         btnEntradas = new javax.swing.JButton();
         btnSalidas = new javax.swing.JButton();
@@ -200,6 +203,8 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         jLabel3 = new javax.swing.JLabel();
         btnEnter = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        labelNombreCliente = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         background = new javaswingdev.message.Background();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -324,6 +329,17 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         txtNumCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/carrito.png"))); // NOI18N
         txtNumCarrito.setText("0");
 
+        jButton4.setBackground(new java.awt.Color(57, 78, 194));
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/usuarios.png"))); // NOI18N
+        jButton4.setText("Cliente asignado a la compra");
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -331,17 +347,18 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNumCarrito, javax.swing.GroupLayout.Alignment.LEADING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 528, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 776, Short.MAX_VALUE)
+                        .addComponent(jButton4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(txtNumCarrito)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(labelFecha)))
-                .addGap(63, 63, 63))
+                    .addComponent(labelFecha))
+                .addGap(103, 103, 103))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -350,7 +367,8 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton3)
-                        .addComponent(jButton2))
+                        .addComponent(jButton2)
+                        .addComponent(jButton4))
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -985,6 +1003,13 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         jLabel4.setForeground(new java.awt.Color(51, 51, 255));
         jLabel4.setText("Productos en el carrito:");
 
+        labelNombreCliente.setText("Publico en General");
+
+        jLabel8.setBackground(new java.awt.Color(57, 78, 194));
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(57, 78, 194));
+        jLabel8.setText("Cliente de venta");
+
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
         panelPrincipalLayout.setHorizontalGroup(
@@ -1010,6 +1035,12 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnRecuperarCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(281, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(labelNombreCliente))
+                .addGap(120, 120, 120))
             .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1360, Short.MAX_VALUE))
         );
@@ -1025,7 +1056,11 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
                         .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(textCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEnter, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 336, Short.MAX_VALUE)
+                .addGap(8, 8, 8)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelNombreCliente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 290, Short.MAX_VALUE)
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelCantCarrito)
                     .addComponent(jLabel4))
@@ -1418,7 +1453,10 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
 
     private void btnComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprarActionPerformed
         if(inventarioApagado){
-            new FrameCobranza(con,this).setVisible(true); 
+            FrameCobranza frameCobranza=new FrameCobranza(con,this); 
+            //obtenemos los datos del cliente para esta venta y se lo pasamos a la interfaz de cobro
+            frameCobranza.cambiarCliente(idCliente,labelNombreCliente.getText());
+            frameCobranza.setVisible(true);
         }
     }//GEN-LAST:event_btnComprarActionPerformed
 
@@ -1753,6 +1791,10 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
     private void TableCarritoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableCarritoMouseClicked
         modificarTable();
     }//GEN-LAST:event_TableCarritoMouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        new FrameAsignarCliente(con,this).setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
     
     private void modificarTable(){
         //obtenemos el valor de la columna y fila seleccionada
@@ -1878,6 +1920,15 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         }
     }
     
+    public void asignarClienteALaVenta(int idCliente,String nombreCliente){
+        this.idCliente=idCliente;
+        labelNombreCliente.setText(nombreCliente);
+    }
+    
+    public void borrarClienteALaVenta(){
+        this.idCliente=-1;
+        labelNombreCliente.setText("Publico en General");
+    }
     
     private int obtenerProductosRestantes(int cantidadEnCarrito,String codigoBarras){
         try{
@@ -2154,7 +2205,7 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
             labelCantCarrito.setText(numerosCarrito+"");
             
             //aumentarle un valor a ese ultimo dato y retornar
-            BigDecimal totalRounded = new BigDecimal(total).setScale(2, RoundingMode.HALF_UP);
+            //BigDecimal totalRounded = new BigDecimal(total).setScale(2, RoundingMode.HALF_UP);
             return total;
         }catch(SQLException ex){
             return total;
@@ -2211,6 +2262,11 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         
        //actualizar datos de pantalla
        TotalC=calcularTotal();
+       //veremos si existe un total y sino existe lo haremos 0. Esto es para que no tenga bugs
+        if (Double.isNaN(TotalC)) {
+           TotalC = 0;
+       }
+       
        BigDecimal totalRounded = new BigDecimal(TotalC).setScale(2, RoundingMode.HALF_UP);
        labelTotal.setText("$"+totalRounded+""); 
        txtNumCarrito.setText(numCarrito+"");       
@@ -2260,12 +2316,14 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
     private javax.swing.JPanel btnVentas;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -2274,6 +2332,7 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
     private javax.swing.JLabel labelFecha;
     private javax.swing.JLabel labelImg;
     private javax.swing.JLabel labelLogo;
+    private javax.swing.JLabel labelNombreCliente;
     private javax.swing.JLabel labelTotal;
     private javax.swing.JLabel labelV;
     private javax.swing.JLabel labelV1;

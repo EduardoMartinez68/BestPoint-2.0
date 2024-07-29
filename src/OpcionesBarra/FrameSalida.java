@@ -1,6 +1,7 @@
 package OpcionesBarra;
 
 import ClasesGlobales.Agregar;
+import static ClasesGlobales.ConvertirNumeroATexto.convertirNumeroATexto;
 import ClasesGlobales.convertir;
 import Notificaciones.FrameError;
 import Notificaciones.MessageCorrect;
@@ -33,6 +34,7 @@ public class FrameSalida extends javax.swing.JFrame {
         this.setResizable(false);
         this.setTitle("Salidas de caja");
         centrarPanel();
+        labelCantidadDinero.setText("("+convertirNumeroATexto(dineroActual())+")");
     }
     
     
@@ -59,6 +61,7 @@ public class FrameSalida extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtSalida = new textfield.TextField();
         txtPorque = new textfield.TextField();
+        labelCantidadDinero = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         panelBtnExit = new javax.swing.JPanel();
@@ -113,6 +116,11 @@ public class FrameSalida extends javax.swing.JFrame {
             }
         });
 
+        labelCantidadDinero.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelCantidadDinero.setForeground(new java.awt.Color(0, 204, 91));
+        labelCantidadDinero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelCantidadDinero.setText("(Cero)");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -120,42 +128,42 @@ public class FrameSalida extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
+                .addGap(41, 41, 41)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(250, 375, Short.MAX_VALUE))
-                            .addComponent(txtPorque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtSalida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3)
-                            .addComponent(txtDineroCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtDineroCaja)
+                            .addComponent(labelCantidadDinero, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtPorque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtSalida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(txtSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtPorque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(txtSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtPorque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(17, 17, 17)
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDineroCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(txtDineroCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelCantidadDinero)
+                        .addGap(16, 16, 16))))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 920, 310));
@@ -296,13 +304,19 @@ public class FrameSalida extends javax.swing.JFrame {
         float dineroSacado=conver.convertirStringFloat(txtSalida.getText());
         float dineroTotal=dineroCaja-dineroSacado;
         
-        if(dineroTotal>=0){
-            guardarEntradaSalida(-dineroSacado);
-            actualizarSalida(dineroTotal);
-            new MessageCorrect(this,"El dinero de la caja fue actualizado de "+dineroCaja+" a "+dineroTotal,null);
-        }
-        else{
-            new MessageError(this,"El dinero sacado no puede sobrepasar al dinero que hay en caja");
+        //esta comprobacion sirve para que no pueda ingresar dinero en el frame de salida de dinero
+        if(dineroSacado<0){
+            new MessageError(this,"El dinero sacado no puede tener un numero negativo");
+        }else{
+            if(dineroTotal>=0){
+                guardarEntradaSalida(-dineroSacado);
+                actualizarSalida(dineroTotal);
+                labelCantidadDinero.setText("("+convertirNumeroATexto(dineroTotal)+")");
+                new MessageCorrect(this,"El dinero de la caja fue actualizado de "+dineroCaja+" a "+dineroTotal,null);
+            }
+            else{
+                new MessageError(this,"El dinero sacado no puede sobrepasar al dinero que hay en caja");
+            }
         }
     }
     
@@ -388,6 +402,7 @@ public class FrameSalida extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel labelCantidadDinero;
     private javax.swing.JLabel labelExit;
     private javax.swing.JPanel panelBtnExit;
     private javax.swing.JTextField txtDineroCaja;
