@@ -189,7 +189,7 @@ public class Agregar {
         }
     }
     
-    public void agregarVentas(String cajero,String producto,int cantidad,float precio,String fecha,String tipoPago,int idProducto){
+    public void agregarVentas(String cajero,String producto,int cantidad,float precio,String fecha,String tipoPago,int idProducto,int idCliente){
        String turnoCajero=getTurno();
        try{
             Statement sts=con.createStatement();

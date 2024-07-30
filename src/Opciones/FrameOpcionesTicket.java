@@ -56,7 +56,6 @@ public class FrameOpcionesTicket extends javax.swing.JFrame{
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         impresionTicket1 = new Opciones.ImpresionTicket();
-        checkBoxFecha = new javax.swing.JCheckBox();
         btnImpresionPrueba = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -72,6 +71,7 @@ public class FrameOpcionesTicket extends javax.swing.JFrame{
         jLabel17 = new javax.swing.JLabel();
         panelBtnExit = new javax.swing.JPanel();
         labelExit = new javax.swing.JLabel();
+        checkBoxFecha = new checkbox.JCheckBoxCustom();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocationByPlatform(true);
@@ -112,16 +112,9 @@ public class FrameOpcionesTicket extends javax.swing.JFrame{
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 78, -1, -1));
 
-        checkBoxFecha.setText("Incluir fecha");
-        checkBoxFecha.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                checkBoxFechaMousePressed(evt);
-            }
-        });
-        getContentPane().add(checkBoxFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 250, -1, -1));
-
         btnImpresionPrueba.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/impresora.png"))); // NOI18N
         btnImpresionPrueba.setText("Probar impresion de prueba");
+        btnImpresionPrueba.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnImpresionPrueba.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnImpresionPruebaActionPerformed(evt);
@@ -144,8 +137,11 @@ public class FrameOpcionesTicket extends javax.swing.JFrame{
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 310, 293, -1));
 
+        jButton2.setBackground(new java.awt.Color(219, 68, 83));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/basura.png"))); // NOI18N
         jButton2.setText("Quitar logotipo");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -153,8 +149,11 @@ public class FrameOpcionesTicket extends javax.swing.JFrame{
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 150, -1, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/busqueda.png"))); // NOI18N
+        jButton1.setBackground(new java.awt.Color(57, 78, 194));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/subir.png"))); // NOI18N
         jButton1.setText("Agregar logotipo");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -196,11 +195,12 @@ public class FrameOpcionesTicket extends javax.swing.JFrame{
         });
         getContentPane().add(txtNombreEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 210, 293, -1));
 
-        btnActualizar.setBackground(new java.awt.Color(22, 35, 105));
+        btnActualizar.setBackground(new java.awt.Color(57, 78, 194));
         btnActualizar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
         btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/disco.png"))); // NOI18N
         btnActualizar.setText("Actualizar");
+        btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarActionPerformed(evt);
@@ -208,7 +208,7 @@ public class FrameOpcionesTicket extends javax.swing.JFrame{
         });
         getContentPane().add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 600, 220, 41));
 
-        jPanel5.setBackground(new java.awt.Color(22, 35, 105));
+        jPanel5.setBackground(new java.awt.Color(57, 78, 194));
         jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel5.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -225,7 +225,7 @@ public class FrameOpcionesTicket extends javax.swing.JFrame{
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Configuraciones de Ticket");
 
-        panelBtnExit.setBackground(new java.awt.Color(22, 35, 105));
+        panelBtnExit.setBackground(new java.awt.Color(57, 78, 194));
 
         labelExit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         labelExit.setForeground(new java.awt.Color(0, 0, 0));
@@ -283,24 +283,52 @@ public class FrameOpcionesTicket extends javax.swing.JFrame{
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, -1));
 
+        checkBoxFecha.setBackground(new java.awt.Color(57, 78, 194));
+        checkBoxFecha.setText("Incluir fecha");
+        checkBoxFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkBoxFechaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(checkBoxFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 250, 140, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
     private void llenarDatosTicket(){
-        String pd=impresionTicket1.getDescripciones();
-        String cant=impresionTicket1.getCantidades();
-        String importe=impresionTicket1.getImportes();
-        String total=impresionTicket1.getTotalProducto();
+        impresionTicket1.setDescripciones("<html><table><tr><th>Producto</th></tr>");
+        impresionTicket1.setCantidades("<html><table><tr><th>Cant.</th></tr>");
+        impresionTicket1.setImportes("<html><table><tr><th>Importe</th></tr>");
+        impresionTicket1.setTotalProducto("<html><table><tr><th>Total</th></tr>");
+ 
+        // Obtener información del producto
+        int cantidad = 1;
+        String descripcion = "Botella de Agua";
+        float precio = 20f;
+        float total = 20f;
+
+        // Obtener los datos viejos que ya están escritos
+        String descripcionVieja = impresionTicket1.getDescripciones();
+        String viejasCantidades = impresionTicket1.getCantidades();
+        String viejosImportes = impresionTicket1.getImportes();
+        String viejoTotalProducto = impresionTicket1.getTotalProducto();
+
+        // Actualizar información
+        impresionTicket1.setDescripciones(descripcionVieja + "<tr><td>" + descripcion + "</td></tr>");
+        impresionTicket1.setCantidades(viejasCantidades + "<tr><td>" + cantidad + "</td></tr>");
+        impresionTicket1.setImportes(viejosImportes + "<tr><td>" + precio + "</td></tr>");
+        impresionTicket1.setTotalProducto(viejoTotalProducto + "<tr><td>" + total + "</td></tr>");
+
+
+        // Cerrar las tablas HTML
+        impresionTicket1.setDescripciones(impresionTicket1.getDescripciones() + "</table></html>");
+        impresionTicket1.setCantidades(impresionTicket1.getCantidades() + "</table></html>");
+        impresionTicket1.setImportes(impresionTicket1.getImportes() + "</table></html>");
+        impresionTicket1.setTotalProducto(impresionTicket1.getTotalProducto() + "</table></html>");
         
-        impresionTicket1.setDescripciones("");
-        impresionTicket1.setCantidades("");
-        impresionTicket1.setImportes("");
-        impresionTicket1.setTotalProducto("");  
-        
-        impresionTicket1.setDescripciones("<html>"+pd+"<p>"+"Agua mineral 600ml"+"<html>");
-        impresionTicket1.setCantidades("<html>"+cant+"<p>"+"1"+"<html>");
-        impresionTicket1.setImportes("<html>"+importe+"<p>"+"$7.00"+"<html>");
-        impresionTicket1.setTotalProducto("<html>"+total+"<p>"+"7"+"<html>");
+        impresionTicket1.setTotal(total+"");
+
+     
     }
     
     private void leerBaseDatos(){
@@ -415,15 +443,6 @@ public class FrameOpcionesTicket extends javax.swing.JFrame{
        impresionTicket1.setNombreEmpres(nombreEmpresa);
     }//GEN-LAST:event_txtNombreEmpresaKeyReleased
 
-    private void checkBoxFechaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkBoxFechaMousePressed
-        if(checkBoxFecha.isSelected()){
-            impresionTicket1.setFecha("");
-        }
-        else{
-            activarFecha();
-        }
-    }//GEN-LAST:event_checkBoxFechaMousePressed
-
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
        obtenerNuevosDatos();
     }//GEN-LAST:event_btnActualizarActionPerformed
@@ -457,7 +476,7 @@ public class FrameOpcionesTicket extends javax.swing.JFrame{
     }//GEN-LAST:event_labelExitMouseEntered
 
     private void labelExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelExitMouseExited
-        panelBtnExit.setBackground(new Color(22,35,105));
+        panelBtnExit.setBackground(new Color(57,78,194));
         labelExit.setForeground(Color.black);
     }//GEN-LAST:event_labelExitMouseExited
 
@@ -473,6 +492,15 @@ public class FrameOpcionesTicket extends javax.swing.JFrame{
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         borrarImgProducto();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void checkBoxFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxFechaActionPerformed
+        if(checkBoxFecha.isSelected()){
+            impresionTicket1.setFecha("");
+        }
+        else{
+            activarFecha();
+        }
+    }//GEN-LAST:event_checkBoxFechaActionPerformed
     
     private void borrarImgProducto(){
         String rutaProyecto=System.getProperty("user.dir");
@@ -493,7 +521,7 @@ public class FrameOpcionesTicket extends javax.swing.JFrame{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnImpresionPrueba;
-    private javax.swing.JCheckBox checkBoxFecha;
+    private checkbox.JCheckBoxCustom checkBoxFecha;
     private Opciones.ImpresionTicket impresionTicket1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

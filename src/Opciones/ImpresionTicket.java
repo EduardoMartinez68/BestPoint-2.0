@@ -1,5 +1,6 @@
 package Opciones;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -14,6 +15,7 @@ public class ImpresionTicket extends javax.swing.JPanel implements Printable{
 
     public ImpresionTicket() {
         initComponents();
+        labelImg.setLocation(271, 10);
     }
 
     @SuppressWarnings("unchecked")
@@ -41,13 +43,16 @@ public class ImpresionTicket extends javax.swing.JPanel implements Printable{
 
         txtFecha.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         txtFecha.setForeground(new java.awt.Color(0, 0, 0));
+        txtFecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtFecha.setText("12/julio/2022 10:23:55");
 
         txtNombreEmpresa.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtNombreEmpresa.setForeground(new java.awt.Color(0, 0, 0));
+        txtNombreEmpresa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtNombreEmpresa.setText("Nombre empresa");
 
         txtMensajeDespedida.setForeground(new java.awt.Color(0, 0, 0));
+        txtMensajeDespedida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtMensajeDespedida.setText("Mensaje despedida");
 
         txtDescripciones.setForeground(new java.awt.Color(0, 0, 0));
@@ -59,51 +64,50 @@ public class ImpresionTicket extends javax.swing.JPanel implements Printable{
         txtTotalProducto.setForeground(new java.awt.Color(0, 0, 0));
         txtTotalProducto.setText("Total");
 
+        labelImg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/imgL.png"))); // NOI18N
+        labelImg.setPreferredSize(new java.awt.Dimension(60, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(txtTotalProducto))
+                    .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtNombreEmpresa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtMensajeDespedida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(txtMensajeDespedida))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(172, 172, 172)
-                        .addComponent(labelImg))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtCantidades)
-                                .addGap(59, 59, 59)
-                                .addComponent(txtDescripciones)
-                                .addGap(73, 73, 73)
-                                .addComponent(txtImportes))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtNombreEmpresa)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(15, 15, 15)
-                                    .addComponent(txtFecha))))))
+                        .addComponent(txtCantidades)
+                        .addGap(59, 59, 59)
+                        .addComponent(txtDescripciones)
+                        .addGap(73, 73, 73)
+                        .addComponent(txtImportes))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addComponent(labelImg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(139, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(txtTotal)
-                        .addGap(25, 25, 25))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(txtTotalProducto)
-                        .addGap(28, 28, 28))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelImg)
+                .addComponent(labelImg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNombreEmpresa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -114,13 +118,13 @@ public class ImpresionTicket extends javax.swing.JPanel implements Printable{
                     .addComponent(txtImportes)
                     .addComponent(txtTotalProducto)
                     .addComponent(txtCantidades))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 279, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTotal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtMensajeDespedida)
-                .addGap(62, 62, 62))
+                .addGap(92, 92, 92))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -178,9 +182,29 @@ public class ImpresionTicket extends javax.swing.JPanel implements Printable{
     }
     
     public void setImg(String rutaImg){
-            Image img=new ImageIcon(rutaImg).getImage();
-            ImageIcon icono=new ImageIcon(img.getScaledInstance(labelImg.getWidth(), labelImg.getHeight(),Image.SCALE_SMOOTH ));
-            labelImg.setIcon(icono);        
+        // Cargar y escalar la imagen
+        Image img = new ImageIcon(rutaImg).getImage();
+        ImageIcon icono = new ImageIcon(img.getScaledInstance(labelImg.getWidth(), labelImg.getHeight(), Image.SCALE_SMOOTH));
+        labelImg.setIcon(icono);
+
+        // Calcular las posiciones para centrar el JLabel
+        int widthLabel = labelImg.getWidth();
+        int widthFrame = this.getWidth();
+        int x = (widthFrame - widthLabel) / 2;
+
+        // Establecer la posición del JLabel
+        labelImg.setLocation(x, labelImg.getY());
+        centrarImagen();
+    }
+    
+    private void centrarImagen(){
+        // Calcular las posiciones para centrar el JLabel
+        int widthLabel = labelImg.getWidth();
+        int widthFrame = this.getWidth();
+        int x = (widthFrame - widthLabel) / 2;
+
+        // Establecer la posición del JLabel
+        labelImg.setLocation(x, labelImg.getY());
     }
     
     @Override

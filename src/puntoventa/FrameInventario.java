@@ -1881,8 +1881,11 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
                 
                 String producto=search.Nombre();
                 float precio=rs.getFloat("total");
-                add.agregarVentas(cajeroActual, producto, cantidadEnCarrito,precio, labelFecha.getText(),tipoPago,idProducto);
+                add.agregarVentas(cajeroActual, producto, cantidadEnCarrito,precio, labelFecha.getText(),tipoPago,idProducto,idCliente);
             }
+            
+            //cuando ya se compraron todas las cosas del carrito reiniciamos los datos del cliente que se compro
+            borrarClienteALaVenta();
             
             //añadir el dinero a la caja 
         }catch(SQLException ex){

@@ -4,6 +4,7 @@ import ClasesGlobales.Buscar;
 import Notificaciones.FrameCorrecto;
 import Notificaciones.FrameError;
 import Notificaciones.MessageCorrect;
+import Notificaciones.MessageError;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.sql.Connection;
@@ -23,8 +24,8 @@ public class FrameComprarTicket extends javax.swing.JFrame {
     int mouseX;
     int mouseY;
     
-    Color colorBtnHover=new Color(46,69,209);
-    Color ColorBtn=new Color(22,35,105);
+    Color colorBtnHover=new Color(35,49,119);
+    Color ColorBtn=new Color(57,78,194); 
     
     public FrameComprarTicket(Connection con,FrameInventario JF) {
         this.JF=JF;
@@ -37,12 +38,13 @@ public class FrameComprarTicket extends javax.swing.JFrame {
         impresionTicket1.setImportes("<html>Importe<p><html>");
         impresionTicket1.setTotalProducto("<html>Total<p><html>");
         
+        this.setSize(800, 620);
         this.setResizable(false);
         this.setTitle("Compra e impresion de Ticket");
         setIconImage(Toolkit.getDefaultToolkit().getImage("icono.png"));
         cambiarLogoTicket();
         leerBaseDatos();
-        registrarCompras();
+        registrarCompras(JF.getNumCarrito());
         centrarPanel();
     }
     
@@ -70,7 +72,7 @@ public class FrameComprarTicket extends javax.swing.JFrame {
         setLocationByPlatform(true);
         setUndecorated(true);
 
-        btnCobrar.setBackground(new java.awt.Color(22, 35, 105));
+        btnCobrar.setBackground(new java.awt.Color(57, 78, 194));
         btnCobrar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnCobrar.setForeground(new java.awt.Color(255, 255, 255));
         btnCobrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/impresora.png"))); // NOI18N
@@ -90,7 +92,7 @@ public class FrameComprarTicket extends javax.swing.JFrame {
             }
         });
 
-        btnTicket.setBackground(new java.awt.Color(22, 35, 105));
+        btnTicket.setBackground(new java.awt.Color(57, 78, 194));
         btnTicket.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnTicket.setForeground(new java.awt.Color(255, 255, 255));
         btnTicket.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/donar.png"))); // NOI18N
@@ -110,7 +112,7 @@ public class FrameComprarTicket extends javax.swing.JFrame {
             }
         });
 
-        btnCobrarTarjeta.setBackground(new java.awt.Color(22, 35, 105));
+        btnCobrarTarjeta.setBackground(new java.awt.Color(57, 78, 194));
         btnCobrarTarjeta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnCobrarTarjeta.setForeground(new java.awt.Color(255, 255, 255));
         btnCobrarTarjeta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/tarjeta.png"))); // NOI18N
@@ -138,7 +140,7 @@ public class FrameComprarTicket extends javax.swing.JFrame {
 
         jLabel3.setText("de credito");
 
-        jPanel1.setBackground(new java.awt.Color(22, 35, 105));
+        jPanel1.setBackground(new java.awt.Color(57, 78, 194));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -155,7 +157,7 @@ public class FrameComprarTicket extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Facturar la compra");
 
-        panelBtnExit.setBackground(new java.awt.Color(22, 35, 105));
+        panelBtnExit.setBackground(new java.awt.Color(57, 78, 194));
         panelBtnExit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 panelBtnExitMousePressed(evt);
@@ -325,7 +327,7 @@ public class FrameComprarTicket extends javax.swing.JFrame {
     }//GEN-LAST:event_labelExitMouseEntered
 
     private void labelExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelExitMouseExited
-        panelBtnExit.setBackground(new Color(22,35,105));
+        panelBtnExit.setBackground(new Color(57,78,194));
         labelExit.setForeground(Color.black);
     }//GEN-LAST:event_labelExitMouseExited
 
@@ -411,13 +413,13 @@ public class FrameComprarTicket extends javax.swing.JFrame {
         DateTimeFormatter dtf=DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
         impresionTicket1.setFecha(dtf.format(LocalDateTime.now())+"");
     }      
-    
-    private void registrarCompras(){
+    /*
+    private void registrarCompras(int numcarrito){
         impresionTicket1.setTotal(JF.getTotalCarrito());
         
         try{
             Statement sts=con.createStatement();
-            sts.execute("Select * from carritocompras");
+            sts.execute("Select * from carritocompras where numcarrito="+numcarrito);
             ResultSet rs=sts.getResultSet();
             
             //pasar por todas la lista de id 
@@ -449,7 +451,56 @@ public class FrameComprarTicket extends javax.swing.JFrame {
         }catch(SQLException ex){
             
         }        
+    }*/
+    
+    private void registrarCompras(int numcarrito) {
+        impresionTicket1.setDescripciones("<html><table><tr><th>Producto</th></tr>");
+        impresionTicket1.setCantidades("<html><table><tr><th>Cant.</th></tr>");
+        impresionTicket1.setImportes("<html><table><tr><th>Importe</th></tr>");
+        impresionTicket1.setTotalProducto("<html><table><tr><th>Total</th></tr>");
+        impresionTicket1.setTotal(JF.getTotalCarrito());
+
+        try {
+            Statement sts = con.createStatement();
+            sts.execute("SELECT * FROM carritocompras WHERE numcarrito=" + numcarrito);
+            ResultSet rs = sts.getResultSet();
+
+            // Pasar por todas la lista de id
+            while (rs.next()) {
+                int idProducto = rs.getInt("idproducto");
+                search.buscarProductoId(idProducto);
+
+                // Obtener información del producto
+                int cantidad = rs.getInt("cantidad");
+                String descripcion = search.Nombre();
+                float precio = search.Precio();
+                float total = rs.getFloat("total");
+
+                // Obtener los datos viejos que ya están escritos
+                String descripcionVieja = impresionTicket1.getDescripciones();
+                String viejasCantidades = impresionTicket1.getCantidades();
+                String viejosImportes = impresionTicket1.getImportes();
+                String viejoTotalProducto = impresionTicket1.getTotalProducto();
+
+                // Actualizar información
+                impresionTicket1.setDescripciones(descripcionVieja + "<tr><td>" + descripcion + "</td></tr>");
+                impresionTicket1.setCantidades(viejasCantidades + "<tr><td>" + cantidad + "</td></tr>");
+                impresionTicket1.setImportes(viejosImportes + "<tr><td>" + precio + "</td></tr>");
+                impresionTicket1.setTotalProducto(viejoTotalProducto + "<tr><td>" + total + "</td></tr>");
+            }
+
+            // Cerrar las tablas HTML
+            impresionTicket1.setDescripciones(impresionTicket1.getDescripciones() + "</table></html>");
+            impresionTicket1.setCantidades(impresionTicket1.getCantidades() + "</table></html>");
+            impresionTicket1.setImportes(impresionTicket1.getImportes() + "</table></html>");
+            impresionTicket1.setTotalProducto(impresionTicket1.getTotalProducto() + "</table></html>");
+
+        } catch (SQLException ex) {
+            // Manejo de errores SQL
+            ex.printStackTrace();
+        }
     }
+
     
     private void cambiarLogoTicket(){
         try{
@@ -480,9 +531,9 @@ public class FrameComprarTicket extends javax.swing.JFrame {
                 job.print();
                 JF.registrarCompras("Efectivo");
                 JF.borrarTabla();
-                JOptionPane.showMessageDialog(JF,"Compras realizadas con exito");
+                new MessageCorrect(JF,"Compras realizadas con exito",JF).setVisible(true);
             }catch(PrinterException ex){
-                JOptionPane.showMessageDialog(this,"Algo fallo al imprimir");
+                new MessageError(this,"Algo fallo al imprimir");
             }
         } 
         this.dispose();
