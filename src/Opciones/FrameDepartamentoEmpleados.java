@@ -73,8 +73,11 @@ public class FrameDepartamentoEmpleados extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
         setLocationByPlatform(true);
         setUndecorated(true);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel10.setBackground(new java.awt.Color(22, 35, 105));
         jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -335,7 +338,7 @@ public class FrameDepartamentoEmpleados extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(txtDescripcionEditar);
 
-        btnEliminar.setBackground(new java.awt.Color(22, 35, 105));
+        btnEliminar.setBackground(new java.awt.Color(219, 68, 83));
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/basura.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
@@ -387,7 +390,7 @@ public class FrameDepartamentoEmpleados extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(205, Short.MAX_VALUE)))
+                    .addContainerGap(215, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Editar departamento", jPanel4);

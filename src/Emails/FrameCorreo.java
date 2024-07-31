@@ -65,13 +65,18 @@ public class FrameCorreo extends javax.swing.JFrame {
         CheckBoxEnviarTodos = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
         setLocationByPlatform(true);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(22, 35, 105));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
+
+        jPanel3.setBackground(new java.awt.Color(57, 78, 194));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -88,7 +93,7 @@ public class FrameCorreo extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Emails");
 
-        panelBtnExit.setBackground(new java.awt.Color(22, 35, 105));
+        panelBtnExit.setBackground(new java.awt.Color(57, 78, 194));
 
         labelExit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         labelExit.setForeground(new java.awt.Color(0, 0, 0));
@@ -147,8 +152,9 @@ public class FrameCorreo extends javax.swing.JFrame {
 
         jLabel5.setText("Correo");
 
-        txtCorreo.setBackground(new java.awt.Color(238, 238, 238));
+        txtCorreo.setBackground(new java.awt.Color(255, 255, 255));
         txtCorreo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCorreo.setForeground(new java.awt.Color(0, 0, 0));
         txtCorreo.setText("Correo electronico");
         txtCorreo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -158,8 +164,9 @@ public class FrameCorreo extends javax.swing.JFrame {
 
         jLabel6.setText("Asunto");
 
-        txtAsunto.setBackground(new java.awt.Color(238, 238, 238));
+        txtAsunto.setBackground(new java.awt.Color(255, 255, 255));
         txtAsunto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtAsunto.setForeground(new java.awt.Color(0, 0, 0));
         txtAsunto.setText("Asunto");
         txtAsunto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -169,8 +176,9 @@ public class FrameCorreo extends javax.swing.JFrame {
 
         jLabel7.setText("Mensaje");
 
-        txtMensaje.setBackground(new java.awt.Color(238, 238, 238));
+        txtMensaje.setBackground(new java.awt.Color(255, 255, 255));
         txtMensaje.setColumns(20);
+        txtMensaje.setForeground(new java.awt.Color(0, 0, 0));
         txtMensaje.setRows(5);
         txtMensaje.setText("Escribe un mensaje...");
         txtMensaje.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -180,7 +188,7 @@ public class FrameCorreo extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(txtMensaje);
 
-        btnEnviar.setBackground(new java.awt.Color(22, 35, 105));
+        btnEnviar.setBackground(new java.awt.Color(57, 78, 194));
         btnEnviar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEnviar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -196,6 +204,7 @@ public class FrameCorreo extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/enviar.png"))); // NOI18N
         jLabel1.setText("Enviar");
 
@@ -203,10 +212,7 @@ public class FrameCorreo extends javax.swing.JFrame {
         btnEnviar.setLayout(btnEnviarLayout);
         btnEnviarLayout.setHorizontalGroup(
             btnEnviarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnEnviarLayout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(35, 35, 35))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
         );
         btnEnviarLayout.setVerticalGroup(
             btnEnviarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,7 +302,7 @@ public class FrameCorreo extends javax.swing.JFrame {
     }//GEN-LAST:event_labelExitMouseEntered
 
     private void labelExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelExitMouseExited
-        panelBtnExit.setBackground(new Color(22,35,105));
+        panelBtnExit.setBackground(new Color(57,78,194));
         labelExit.setForeground(Color.black);
     }//GEN-LAST:event_labelExitMouseExited
 

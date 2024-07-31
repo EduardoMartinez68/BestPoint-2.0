@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import Opciones.FrameOpciones;
 import Clientes.FrameCreditos;
 import Cortes.FrameCorte;
+import Emails.EmailsPanel;
 import Emails.FrameCorreo;
 import Inventario.FrameInventarioTienda;
 import Notificaciones.FrameCorrecto;
@@ -470,6 +471,7 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         });
 
         labelV.setForeground(new java.awt.Color(255, 255, 255));
+        labelV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/carrito-de-compras.png"))); // NOI18N
         labelV.setText("Ventas");
 
@@ -478,9 +480,8 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         btnVentasLayout.setHorizontalGroup(
             btnVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnVentasLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(labelV)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(labelV, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
         );
         btnVentasLayout.setVerticalGroup(
             btnVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -505,6 +506,7 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         });
 
         labelV1.setForeground(new java.awt.Color(255, 255, 255));
+        labelV1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelV1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/usuarios.png"))); // NOI18N
         labelV1.setText("F2 Creditos");
 
@@ -512,10 +514,10 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         btnCreditos.setLayout(btnCreditosLayout);
         btnCreditosLayout.setHorizontalGroup(
             btnCreditosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnCreditosLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(labelV1)
-                .addContainerGap(36, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCreditosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelV1, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                .addContainerGap())
         );
         btnCreditosLayout.setVerticalGroup(
             btnCreditosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -540,6 +542,7 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         });
 
         labelV2.setForeground(new java.awt.Color(255, 255, 255));
+        labelV2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelV2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/usuarios-alt.png"))); // NOI18N
         labelV2.setText("Clientes");
 
@@ -547,10 +550,7 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         bntClientes.setLayout(bntClientesLayout);
         bntClientesLayout.setHorizontalGroup(
             bntClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bntClientesLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(labelV2)
-                .addContainerGap(36, Short.MAX_VALUE))
+            .addComponent(labelV2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
         );
         bntClientesLayout.setVerticalGroup(
             bntClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -575,6 +575,7 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         });
 
         labelV4.setForeground(new java.awt.Color(255, 255, 255));
+        labelV4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelV4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/movimiento-de-camiones.png"))); // NOI18N
         labelV4.setText("Inventario");
 
@@ -583,9 +584,8 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         btnInventarioLayout.setHorizontalGroup(
             btnInventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnInventarioLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(labelV4)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(labelV4, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
         );
         btnInventarioLayout.setVerticalGroup(
             btnInventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -610,6 +610,7 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         });
 
         labelV5.setForeground(new java.awt.Color(255, 255, 255));
+        labelV5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelV5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/documento-firmado.png"))); // NOI18N
         labelV5.setText("Compras");
 
@@ -617,10 +618,9 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         btnCompras.setLayout(btnComprasLayout);
         btnComprasLayout.setHorizontalGroup(
             btnComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnComprasLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(labelV5)
-                .addContainerGap(36, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnComprasLayout.createSequentialGroup()
+                .addComponent(labelV5, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                .addContainerGap())
         );
         btnComprasLayout.setVerticalGroup(
             btnComprasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -645,6 +645,7 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         });
 
         labelV6.setForeground(new java.awt.Color(255, 255, 255));
+        labelV6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelV6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/ajustes.png"))); // NOI18N
         labelV6.setText("Configuracion");
 
@@ -653,9 +654,8 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         btnConfiguracionLayout.setHorizontalGroup(
             btnConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnConfiguracionLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(labelV6)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(labelV6, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
         );
         btnConfiguracionLayout.setVerticalGroup(
             btnConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -680,6 +680,7 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         });
 
         labelV7.setForeground(new java.awt.Color(255, 255, 255));
+        labelV7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelV7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/tijeras.png"))); // NOI18N
         labelV7.setText("Corte");
 
@@ -687,10 +688,7 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         btnCorte.setLayout(btnCorteLayout);
         btnCorteLayout.setHorizontalGroup(
             btnCorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnCorteLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(labelV7)
-                .addContainerGap(45, Short.MAX_VALUE))
+            .addComponent(labelV7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
         );
         btnCorteLayout.setVerticalGroup(
             btnCorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -715,6 +713,7 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         });
 
         labelV8.setForeground(new java.awt.Color(255, 255, 255));
+        labelV8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelV8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/grafico-histograma.png"))); // NOI18N
         labelV8.setText("Reporte");
 
@@ -723,9 +722,9 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         btnReporteLayout.setHorizontalGroup(
             btnReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnReporteLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(labelV8)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(labelV8, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .addContainerGap())
         );
         btnReporteLayout.setVerticalGroup(
             btnReporteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -750,6 +749,7 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         });
 
         labelV9.setForeground(new java.awt.Color(255, 255, 255));
+        labelV9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         labelV9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/desconectar.png"))); // NOI18N
         labelV9.setText("Cerrar ");
 
@@ -759,8 +759,7 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
             btnSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnSalirLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelV9)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addComponent(labelV9, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
         );
         btnSalirLayout.setVerticalGroup(
             btnSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -785,6 +784,7 @@ public class FrameInventario extends javax.swing.JFrame implements Runnable{
         });
 
         labelV3.setForeground(new java.awt.Color(255, 255, 255));
+        labelV3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelV3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/copiar-alt.png"))); // NOI18N
         labelV3.setText("Productos");
 

@@ -71,7 +71,7 @@ public class FrameMembresia extends javax.swing.JFrame {
                 btnIngresarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, 188, 40));
+        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 188, 40));
 
         txtUsuario.setLabelText("Ingresa Token de usuario");
         txtUsuario.setLineColor(new java.awt.Color(22, 35, 105));
@@ -80,11 +80,11 @@ public class FrameMembresia extends javax.swing.JFrame {
                 txtUsuarioActionPerformed(evt);
             }
         });
-        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 118, 460, -1));
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 460, -1));
 
         txtPasword.setLabelText("Ingresa tu contraseña ");
         txtPasword.setLineColor(new java.awt.Color(22, 35, 105));
-        jPanel1.add(txtPasword, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 190, 460, -1));
+        jPanel1.add(txtPasword, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 460, -1));
 
         jPanel2.setBackground(new java.awt.Color(57, 78, 194));
 
