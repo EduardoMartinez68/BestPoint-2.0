@@ -4,6 +4,7 @@ import Inventario.ActualizarTablaInventarioTienda;
 import Notificaciones.MessageError;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import puntoventa.FrameInventario;
 
@@ -167,6 +168,11 @@ public class FrameTablaProductos extends javax.swing.JFrame {
         codigoBarrasBuscar.setLabelText("Busca un producto por su codigo de barras");
         codigoBarrasBuscar.setLineColor(new java.awt.Color(22, 35, 105));
         codigoBarrasBuscar.setSelectionColor(new java.awt.Color(22, 35, 105));
+        codigoBarrasBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                codigoBarrasBuscarKeyReleased(evt);
+            }
+        });
 
         btnGuardarProducto.setBackground(new java.awt.Color(57, 78, 194));
         btnGuardarProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -346,6 +352,10 @@ public class FrameTablaProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarProductoMouseExited
 
     private void btnGuardarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarProductoActionPerformed
+        buscarProducto();
+    }//GEN-LAST:event_btnGuardarProductoActionPerformed
+    
+    private void buscarProducto(){
         //creamos la interfaz de edicion de productos 
         FrameActualizarProductos frameActualizarProductos=new FrameActualizarProductos(con,JF);
         
@@ -358,9 +368,9 @@ public class FrameTablaProductos extends javax.swing.JFrame {
             //si existe un producto en la base de datos, mostraremos los datos en pantalla y ocultaremos esta interfaz
             frameActualizarProductos.setVisible(true);
             this.dispose();
-        }
-    }//GEN-LAST:event_btnGuardarProductoActionPerformed
-
+        }      
+    }
+    
     private void btnDepartamentosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDepartamentosMouseEntered
         btnDepartamentos.setBackground(colorBtnFondoHover);
         //jLabel18.setForeground(Color.BLACK);
@@ -390,6 +400,13 @@ public class FrameTablaProductos extends javax.swing.JFrame {
        this.dispose();
        new FrameProductos(con,JF).setVisible(true);
     }//GEN-LAST:event_btnAgregarMousePressed
+
+    private void codigoBarrasBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codigoBarrasBuscarKeyReleased
+        // Verificar si la tecla pulsada es la tecla de Enter
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            buscarProducto();
+        }
+    }//GEN-LAST:event_codigoBarrasBuscarKeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnAgregar;

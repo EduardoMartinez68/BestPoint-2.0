@@ -76,20 +76,16 @@ public class Agregar {
         }
     }  
     
-    public void productos(String nombre,String descripcion,String codigoBarras,float costo,float ganancia,float precio,String seVendePor,String ubicacion,int cantidad,String usaInventario,String rutaImg,float precioporpeso,String unidad){
+    public void productos(String nombre,String descripcion,String codigoBarras,float costo,float ganancia,float precio,String seVendePor,String ubicacion,int cantidad,String usaInventario,String rutaImg,float precioporpeso,String unidad,float minimo, float maximo){
         try{
             Statement sts=con.createStatement();
-            sts.executeUpdate("INSERT INTO productos (nombre, descripcion, codigobarras, costo,ganancia, precio, sevendepor, ubicacion, cantidad, usainventario, rutimg, precioporpeso, unidad)"
-                    +" VALUES ('"+nombre+"','"+ descripcion+"','"+codigoBarras+"','"+costo+"','"+ganancia+"','"+precio+"','"+seVendePor+"','"+ubicacion+"','"+cantidad+"','"+usaInventario+"','"+rutaImg+"','"+precioporpeso+"','"+unidad+"' )" );
-            
-            //(nombre, descripcion, codigoBarras, costo,ganancia, precio, seVendePor, ubicacion, cantidad, usaInventario)
-            //sts.executeBatch();
+            sts.executeUpdate("INSERT INTO productos (nombre, descripcion, codigobarras, costo,ganancia, precio, sevendepor, ubicacion, cantidad, usainventario, rutimg, precioporpeso, unidad, minimo, maximo)"
+                    +" VALUES ('"+nombre+"','"+ descripcion+"','"+codigoBarras+"','"+costo+"','"+ganancia+"','"+precio+"','"+seVendePor+"','"+ubicacion+"','"+cantidad+"','"+usaInventario+"','"+rutaImg+"','"+precioporpeso+"','"+unidad+"','"+minimo+"','"+maximo+"' )" );
         }
         catch(SQLException e){
             System.out.println("Error al agregar");
             System.out.println(e);
             new FrameError(JF2,"Error "+e).setVisible(true);
-            //JOptionPane.showMessageDialog(JF, "Error "+e);
         }
     }
     

@@ -253,6 +253,9 @@
               <Color blue="69" green="23" red="16" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="codigoBarrasBuscarKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnGuardarProducto">
           <Properties>

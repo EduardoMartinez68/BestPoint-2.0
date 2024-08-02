@@ -115,12 +115,11 @@ public class FrameProductos extends javax.swing.JFrame {
         txtNombre = new textfield.TextField();
         jPanel1 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
-        textField2 = new textfield.TextField();
-        textField3 = new textfield.TextField();
+        txtMaximo = new textfield.TextField();
+        txtMinimo = new textfield.TextField();
         labelCant1 = new javax.swing.JLabel();
         labelCant2 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
-        jCheckBoxCustom2 = new checkbox.JCheckBoxCustom();
         jCheckBoxCustom3 = new checkbox.JCheckBoxCustom();
         txtCantidad = new textfield.TextField();
         labelCant = new javax.swing.JLabel();
@@ -426,13 +425,13 @@ public class FrameProductos extends javax.swing.JFrame {
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
         jPanel12.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        textField2.setLabelText("Maximo");
-        textField2.setLineColor(new java.awt.Color(22, 35, 105));
-        textField2.setSelectionColor(new java.awt.Color(22, 35, 105));
+        txtMaximo.setLabelText("Maximo");
+        txtMaximo.setLineColor(new java.awt.Color(22, 35, 105));
+        txtMaximo.setSelectionColor(new java.awt.Color(22, 35, 105));
 
-        textField3.setLabelText("Minimo");
-        textField3.setLineColor(new java.awt.Color(22, 35, 105));
-        textField3.setSelectionColor(new java.awt.Color(22, 35, 105));
+        txtMinimo.setLabelText("Minimo");
+        txtMinimo.setLineColor(new java.awt.Color(22, 35, 105));
+        txtMinimo.setSelectionColor(new java.awt.Color(22, 35, 105));
 
         labelCant1.setText("Unidad");
 
@@ -445,8 +444,8 @@ public class FrameProductos extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textField3, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelCant1)
@@ -459,23 +458,15 @@ public class FrameProductos extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(labelCant1)
-                    .addComponent(textField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelCant2))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
         jLabel36.setText("Recordatorio del inventario");
-
-        jCheckBoxCustom2.setBackground(new java.awt.Color(57, 78, 194));
-        jCheckBoxCustom2.setText("Este producto se vendera como servicio");
-        jCheckBoxCustom2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxCustom2ActionPerformed(evt);
-            }
-        });
 
         jCheckBoxCustom3.setBackground(new java.awt.Color(57, 78, 194));
         jCheckBoxCustom3.setText("Este producto requiere receta ");
@@ -508,7 +499,6 @@ public class FrameProductos extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(checkInventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCheckBoxCustom3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBoxCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -526,10 +516,8 @@ public class FrameProductos extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(checkInventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxCustom3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(labelCant)
                     .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -781,10 +769,6 @@ public class FrameProductos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBoxCustom3ActionPerformed
 
-    private void jCheckBoxCustom2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxCustom2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxCustom2ActionPerformed
-
     private void btnAgregarImpuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImpuestoActionPerformed
         if(!verificarImpuestoExistente(comboxTipoImpuesto.getSelectedItem().toString())){
             agregarImpuesto();
@@ -980,24 +964,17 @@ public class FrameProductos extends javax.swing.JFrame {
         //obtener datos necesarios 
         float precio=conver.convertirStringFloat(txtPrecioFinalIva.getText().toString());
         float cantidad=conver.convertirStringFloat(txtCantidad.getText().toString());
-        
         if (!txtNombre.getText().equals("") && !txtCosto.getText().equals("") && !txtCodigo.getText().equals("") && precio>0 && cantidad>0){
             guardarDatoProductos();
             guardarImpuestoProducto();
             new MessageCorrect(this,"El producto '"+txtNombre.getText()+"'"
                     + "\nfue añadido con exito",null);
-            /*
-            new FrameCorrecto(null,"El producto '"+txtCosto.getText()+"'"
-                    + "\nfue añadido con exito").setVisible(true);*/
             limpiarPantalla();
         }
         else{
-            new MessageError(this,"Faltan datos por llenar");
-            //new FrameError(null,"Faltan datos por llenar.").setVisible(true);           
-            /*
-            new FrameError("Faltan datos por llenar.\n "
+            new MessageError(this,"Faltan datos por llenar.\n "
                     + "Revisa el nombre del producto,codigo de barras \n, "
-                    + "el precio y la cantidad en existencia").setVisible(true);*/
+                    + "el precio y la cantidad en existencia");
         }
     }
     
@@ -1051,8 +1028,11 @@ public class FrameProductos extends javax.swing.JFrame {
         String usaInventario=getUsaInventario();
         float precioPeso=conver.convertirStringFloat(txtPrecioPeso.getText());
         String unidad=ComboBoxPeso.getSelectedItem().toString();
+        float minimo=conver.convertirStringFloat(txtMinimo.getText().toString());
+        float maximo=conver.convertirStringFloat(txtMaximo.getText().toString());
+        
         add.productos(nombre,descripcion,codigoBarras,costo,ganancia,precio,
-                seVendePor,ubicacion,cantidad,usaInventario,rutaImg,precioPeso,unidad);
+                seVendePor,ubicacion,cantidad,usaInventario,rutaImg,precioPeso,unidad,minimo,maximo);
     }
     
     private void actualizarSelecion(int index){
@@ -1161,7 +1141,6 @@ public class FrameProductos extends javax.swing.JFrame {
     private checkbox.JCheckBoxCustom checkInventario;
     private combobox.Combobox comboxDepartamentos;
     private combobox.Combobox comboxTipoImpuesto;
-    private checkbox.JCheckBoxCustom jCheckBoxCustom2;
     private checkbox.JCheckBoxCustom jCheckBoxCustom3;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel15;
@@ -1192,12 +1171,12 @@ public class FrameProductos extends javax.swing.JFrame {
     private javax.swing.JPanel panelBtnExit;
     private javax.swing.JSpinner sprineGanancia;
     private javaswingdev.swing.table.Table tablaImpuestos;
-    private textfield.TextField textField2;
-    private textfield.TextField textField3;
     private textfield.TextField txtCantidad;
     private textfield.TextField txtCodigo;
     private textfield.TextField txtCosto;
     private textfield.TextField txtDescripcion;
+    private textfield.TextField txtMaximo;
+    private textfield.TextField txtMinimo;
     private textfield.TextField txtNombre;
     private javax.swing.JTextField txtPrecioFinal;
     private javax.swing.JTextField txtPrecioFinalIva;

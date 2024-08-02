@@ -638,7 +638,6 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="checkInventario" min="-2" max="-2" attributes="0"/>
                               <Component id="jCheckBoxCustom3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jCheckBoxCustom2" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -662,10 +661,8 @@
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                           <Component id="checkInventario" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jCheckBoxCustom2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="jCheckBoxCustom3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="labelCant" min="-2" max="-2" attributes="0"/>
                               <Component id="txtCantidad" min="-2" max="-2" attributes="0"/>
@@ -698,8 +695,8 @@
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="textField3" min="-2" pref="193" max="-2" attributes="0"/>
-                                  <Component id="textField2" min="-2" pref="193" max="-2" attributes="0"/>
+                                  <Component id="txtMinimo" min="-2" pref="193" max="-2" attributes="0"/>
+                                  <Component id="txtMaximo" min="-2" pref="193" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -716,11 +713,11 @@
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="labelCant1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="textField3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtMinimo" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="textField2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtMaximo" min="-2" max="-2" attributes="0"/>
                                   <Component id="labelCant2" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="21" max="32767" attributes="0"/>
@@ -729,7 +726,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="textfield.TextField" name="textField2">
+                    <Component class="textfield.TextField" name="txtMaximo">
                       <Properties>
                         <Property name="labelText" type="java.lang.String" value="Maximo"/>
                         <Property name="lineColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -740,7 +737,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="textfield.TextField" name="textField3">
+                    <Component class="textfield.TextField" name="txtMinimo">
                       <Properties>
                         <Property name="labelText" type="java.lang.String" value="Minimo"/>
                         <Property name="lineColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -767,17 +764,6 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Recordatorio del inventario"/>
                   </Properties>
-                </Component>
-                <Component class="checkbox.JCheckBoxCustom" name="jCheckBoxCustom2">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="c2" green="4e" red="39" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Este producto se vendera como servicio"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxCustom2ActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="checkbox.JCheckBoxCustom" name="jCheckBoxCustom3">
                   <Properties>

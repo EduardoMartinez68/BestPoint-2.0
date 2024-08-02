@@ -302,6 +302,26 @@ public class Buscar {
         }
     }    
     
+    public float Minimo(){
+        try{
+            return rs.getInt("minimo");
+        }
+        catch(SQLException e){
+            System.out.println("Error "+e);
+            return 0;
+        }
+    }
+    
+    public float Maximo(){
+        try{
+            return rs.getInt("maximo");
+        }
+        catch(SQLException e){
+            System.out.println("Error "+e);
+            return 0;
+        }
+    }
+    
     public Connection getCon(){
         return con;
     }
